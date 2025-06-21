@@ -1,0 +1,4 @@
+Directory,File,Action,Color,Status,Instructions,Version
+cognitive,__init__.py,Keep,Green (#4ADE80),Active,"Package initialization","v1.0"
+cognitive,interest_enhancer.py,Update,Blue (#60A5FA),Active,"Interest-based content enhancement","v1.2"
+cognitive,learning_adapter.py,Update,Blue (#60A5FA),Active,"Learning style content adaptation","v1.3"

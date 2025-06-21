@@ -1,0 +1,8 @@
+Module,Directory,File,Status,Version,Priority,LastUpdated,Owner,Notes
+Memory,memory/,__init__.py,Active,v1.0,High,2025-06-17,Core Team,"Memory System Core"
+Memory,memory/,memory_core.py,Active,v2.1,High,2025-06-17,AI Team,"Enhanced memory with decay algorithms"
+Memory,memory/,memory_integration.py,Active,v1.3,High,2025-06-17,Integration Team,"Memory system initialization"
+Memory,memory/,memory_node.py,Active,v1.7,High,2025-06-17,AI Team,"Memory node and processing system"
+Memory,memory/,progress_manager.py,Active,v1.2,High,2025-06-17,Systems Team,"Compressed memory state manager"
+Memory,memory/,version_history.json,Locked,v1.0,Low,2025-06-13,Systems Team,"Version control metadata"
+Memory,memory/Think/,Think_session*.txt,Active,v1.0,Medium,2025-06-17,AI Team,"30+ think session transcripts"

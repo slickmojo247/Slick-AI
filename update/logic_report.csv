@@ -1,0 +1,2 @@
+Module,Directory,File,Status,Version,Priority,LastUpdated,Owner,Notes
+Logic,logic/,convert.py,Active,v1.3,High,2025-06-17,Systems Team,"Cross-platform format converter"

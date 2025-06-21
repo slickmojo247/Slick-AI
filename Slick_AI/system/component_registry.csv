@@ -1,0 +1,6 @@
+Component,Type,Location,Function
+main.py,Entry Point,/,Starts CLI
+Slick_AI_Command_Interface.py,Core Module,core/,Handles commands
+update_system.py,Utility,system/cli_extensions/update/,Processes CSV reports
+rescan_and_verify.py,Utility,system/cli_extensions/update/,Validates structure
+new_module.py,Module,core/,New functionality

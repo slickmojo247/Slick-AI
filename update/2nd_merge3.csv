@@ -1,0 +1,142 @@
+Path,Filename,Content,Type,Description
+core/,,"",directory,"Core AI system components"
+core/ai/,,"",directory,"AI orchestration and routing"
+core/ai/AIOrchestrator.py,"import openai
+import deepseek
+from ..memory import MemoryBank
+
+class AIOrchestrator:
+    def __init__(self):
+        self.memory = MemoryBank()
+        self.router = {
+            'creative': 'openai',
+            'technical': 'deepseek',
+            'hybrid': 'auto'
+        }
+    
+    def route_query(self, query):
+        context = self.memory.get_context(query)
+        if 'code' in context.tags:
+            return self.router['technical']
+        return self.router['hybrid']","python","AI routing system"
+core/ai/CognitiveCore.py,"from sklearn import neural_network
+from .KnowledgeGraph import KnowledgeGraph
+
+class CognitiveCore:
+    def __init__(self):
+        self.mlp = neural_network.MLPClassifier()
+        self.knowledge = KnowledgeGraph()","python","Main reasoning engine"
+core/memory/,,"",directory,"Memory system components"
+core/memory/MemoryBank.py,"import numpy as np
+from datetime import datetime
+
+class MemoryBank:
+    def __init__(self):
+        self.nodes = {}
+        self.decay_rate = 0.15
+    
+    def add_node(self, event):
+        node_id = len(self.nodes)
+        self.nodes[node_id] = {
+            'timestamp': datetime.now(),
+            'content': event,
+            'weight': 1.0
+        }","python","Central memory storage"
+core/memory/MemoryNode.py,"class MemoryNode:
+    def __init__(self, content):
+        self.content = content
+        self.connections = []
+        self.last_accessed = None","python","Memory node structure"
+web/,,"",directory,"Web interface components"
+web/frontend/,,"",directory,"Frontend Vue.js application"
+web/frontend/src/,,"",directory,"Source files"
+web/frontend/src/components/ServiceControlPanel.vue,"<template>
+  <!-- Full ServiceControlPanel.vue content -->
+</template>
+
+<script>
+// Full ServiceControlPanel.js content
+</script>
+
+<style scoped>
+/* Full ServiceControlPanel.css content */
+</style>","vue","Service management UI"
+web/frontend/src/components/ConflictResolver.vue,"<template>
+  <!-- Full ConflictResolver.vue content -->
+</template>
+
+<script>
+// Full ConflictResolver.js content
+</script>","vue","Version conflict resolution UI"
+web/frontend/src/views/DeveloperDashboard.vue,"<template>
+  <!-- Full DeveloperDashboard.vue content -->
+</template>
+
+<script>
+// Full DeveloperDashboard.js content
+</script>","vue","Main developer interface"
+web/backend/,,"",directory,"Flask backend"
+web/backend/app.py,"from flask import Flask
+from .routes import api_blueprint
+
+app = Flask(__name__)
+app.register_blueprint(api_blueprint)
+
+if __name__ == '__main__':
+    app.run()","python","Main backend application"
+web/backend/routes.py,"from flask import Blueprint, jsonify
+
+api = Blueprint('api', __name__)
+
+@api.route('/services')
+def get_services():
+    return jsonify({'status': 'ok'})","python","API route definitions"
+cli/,,"",directory,"Command line interface"
+cli/main.py,"import click
+from ..core import AIOrchestrator
+
+@click.group()
+def cli():
+    pass
+
+@cli.command()
+def start():
+    ai = AIOrchestrator()
+    ai.initialize()","python","Main CLI entry point"
+config/,,"",directory,"Configuration files"
+config/settings.ini,"[ai]
+default_model = hybrid
+openai_key = 
+deepseek_key = 
+
+[memory]
+decay_rate = 0.15
+max_nodes = 1000","ini","Main configuration"
+scripts/,,"",directory,"System scripts"
+scripts/sync_manager.py,"# Full sync_manager.py content","python","File synchronization system"
+scripts/update_system.py,"# Full update_system.py content","python","System update handler"
+tests/,,"",directory,"Test files"
+tests/test_ai.py,"import unittest
+from ..core.ai import AIOrchestrator
+
+class TestAI(unittest.TestCase):
+    def test_routing(self):
+        ai = AIOrchestrator()
+        self.assertEqual(ai.route_query('Python code'), 'deepseek')","python","AI tests"
+docs/,,"",directory,"Documentation"
+docs/API.md,"# Slick API Documentation
+## Endpoints:
+- GET /services
+- POST /ai/query","markdown","API documentation"
+static/,,"",directory,"Static assets"
+static/css/main.css,"/* Full cosmic theme CSS */","css","Main stylesheet"
+static/js/app.js,"// Full frontend JavaScript","javascript","Main application script"
+.gitignore,"*.pyc
+__pycache__
+.env","text","Git ignore rules"
+requirements.txt,"flask==2.3.2
+openai==0.28.1
+numpy==1.24.3","text","Python dependencies"
+README.md,"# Slick AI System
+## Installation
+1. pip install -r requirements.txt","markdown","Project overview"

@@ -1,0 +1,12 @@
+Module,Directory,File,Status,Version,Priority,LastUpdated,Owner,Notes
+Scripts,scripts/,Backup.py,Active,v1.4,High,2025-06-17,DevOps,"AI state backup system with compression"
+Scripts,scripts/,build_project.py,Active,v1.2,High,2025-06-17,Systems Team,"Project structure builder from CSV"
+Scripts,scripts/,convert_manifest.py,Active,v1.1,Medium,2025-06-17,Systems Team,"Manifest format converter"
+Scripts,scripts/,extract_slick_ai_components.py,Active,v1.1,Medium,2025-06-17,Systems Team,"Component extraction tool"
+Scripts,scripts/,organize_project.sh,Active,v1.3,High,2025-06-17,Systems Team,"Bash project organizer"
+Scripts,scripts/,prepare_slick_ai_system.py,Active,v1.5,High,2025-06-17,Systems Team,"Flask AI system initializer"
+Scripts,scripts/,rebuild.py,Active,v1.1,High,2025-06-17,Systems Team,"Project rebuild from CSV sources"
+Scripts,scripts/,reorganize_project.py,Active,v1.4,High,2025-06-17,Systems Team,"Python project reorganizer"
+Scripts,scripts/,restore_files.py,Active,v1.0,Medium,2025-06-17,Systems Team,"File restoration from CSV"
+Scripts,scripts/,sync_system.py,Active,v1.2,High,2025-06-17,DevOps,"Git and file synchronization"
+Scripts,scripts/,update_system.py,Active,v1.3,High,2025-06-17,DevOps,"Combined version updater"

@@ -1,0 +1,4 @@
+Error reading update/2nd_merge4.csv: Error tokenizing data. C error: Expected 8 fields in line 9, saw 9
+
+Error reading update/slick_ai_architecture_v1.2_2025618.csv: Error tokenizing data. C error: Expected 10 fields in line 9, saw 11
+

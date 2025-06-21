@@ -1,0 +1,9 @@
+Module,Directory,File,Status,Version,Priority,LastUpdated,Owner,Notes
+Services,services/ai/,connector.py,Active,v1.4,High,2025-06-17,AI Team,"Multi-provider AI connector (OpenAI/Deepseek)"
+Services,services/ai/,knowledge.py,Active,v1.2,High,2025-06-17,AI Team,"Knowledge base query system"
+Services,services/ai/,voice.py,Active,v1.1,Medium,2025-06-17,Audio Team,"Voice recognition service"
+Services,services/audio/,noise_filter.py,Active,v1.3,Medium,2025-06-17,Audio Team,"Enhanced audio processing"
+Services,services/,command_manager.py,Active,v1.2,High,2025-06-17,Systems Team,"Command configuration manager"
+Services,services/comms/,manager.py,Active,v1.3,High,2025-06-17,Comms Team,"Telegram/websocket communication hub"
+Services,services/,file_manager.py,Active,v1.1,Medium,2025-06-17,Systems Team,"File system status tracker"
+Services,services/,service_manager.py,Active,v1.2,High,2025-06-17,DevOps,"Service lifecycle controller"

@@ -1,0 +1,42 @@
+Path,Type,Status,Version,Priority,Dependencies,Owner,LastUpdated,Notes
+setup.py,Config,Complete,v1.0,High,"setuptools, pip",DevOps,2025-06-21,Package configuration
+bin/slick,CLI,Complete,v1.0,High,bash,CLI Team,2025-06-21,Standalone executable
+slick/__main__.py,Core,Complete,v1.1,High,,Core Team,2025-06-21,Module entry point
+slick/cli/main.py,CLI,Complete,v1.3,High,"click, rich",CLI Team,2025-06-21,Primary CLI handler
+slick/cli/__init__.py,Core,Complete,v1.0,Medium,,Core Team,2025-06-21,CLI package init
+slick/cli/voice_tools.py,CLI,Complete,v1.0,Medium,slick.system.voice_listener,CLI Team,2025-06-21,Android mic listening
+slick/cli/plain_knowledge.py,CLI,Complete,v1.2,Medium,"typer, pathlib",AI Team,2025-06-21,Plain text knowledge management
+slick/cli/report.py,CLI,Complete,v1.1,Medium,click,System Team,2025-06-21,Project analysis reports
+slick/cli/report_project.py,CLI,Complete,v1.0,High,"json, csv",System Team,2025-06-21,Complete project backup
+slick/cli/reset_tool.py,CLI,Complete,v1.0,High,"click, pandas",Core Team,2025-06-21,Memory reset operations
+slick/cli/see_monitor.py,CLI,Complete,v1.0,Medium,"rich, psutil",System Team,2025-06-21,Process monitoring
+slick/cli/slick_cli.py,CLI,Complete,v1.0,High,requests,Core Team,2025-06-21,Main CLI entrypoint
+slick/cli/slick_start.py,CLI,Complete,v1.0,High,cryptography,Core Team,2025-06-21,Service manager
+slick/cli/slick_stop.py,CLI,Complete,v1.0,High,,Core Team,2025-06-21,Graceful shutdown
+slick/cli/status.py,CLI,Complete,v1.0,Medium,json,Core Team,2025-06-21,System status
+slick/cli/step_trainer.py,CLI,Complete,v1.0,Medium,,AI Team,2025-06-21,Code snippet training
+slick/cli/sync_vscode.py,CLI,Complete,v1.0,High,watchdog,Integration Team,2025-06-21,VSCode-web sync
+slick/cli/deploy.py,CLI,In Progress,,High,,CLI Team,2025-06-21,Deployment commands
+slick/cli/plugin.py,CLI,Planned,,Medium,,CLI Team,2025-06-21,Plugin management
+slick/cli/config.py,CLI,Planned,,High,,CLI Team,2025-06-21,Configuration interface
+slick/core/action_base.py,Core,Complete,v1.2,High,,AI Team,2025-06-20,Base action class
+slick/core/action_registry.py,Core,Complete,v1.3,High,"re, importlib",AI Team,2025-06-21,Action management
+slick/core/context_ai.py,Core,Complete,v1.4,Critical,"json, webbrowser",AI Team,2025-06-21,Enhanced with CLI
+slick/core/bridge.py,Integration,Complete,v1.2,High,asyncio,System Team,2025-06-21,Channel bridge
+slick/core/security.py,Security,Complete,v1.3,Critical,,Security Team,2025-06-21,Auth system
+slick/core/service_manager.py,System,Complete,v1.3,High,"subprocess, threading",System Team,2025-06-21,Service control
+slick/actions/game.py,Plugin,Complete,v1.1,Medium,,Game Team,2025-06-20,Game actions
+slick/actions/light.py,Plugin,Complete,v1.1,Medium,,IoT Team,2025-06-20,Smart home
+slick/actions/schedule.py,Plugin,Complete,v1.1,Medium,,Productivity Team,2025-06-20,Calendar
+slick/actions/web.py,Plugin,Complete,v1.2,Medium,webbrowser,Web Team,2025-06-21,Browser control
+slick/services/status_analyzer.py,Service,Complete,v1.2,High,"sqlite3, hashlib",System Team,2025-06-21,File analysis
+slick/connectors/deepseek.py,Integration,Complete,v1.3,High,aiohttp,AI Team,2025-06-21,API client
+slick/connectors/telegram.py,Integration,Complete,v1.2,High,python-telegram-bot,Integration Team,2025-06-21,Bot
+slick/web_interface/web_server.py,Web,Complete,v1.3,High,"FastAPI, uvicorn",Web Team,2025-06-21,API server
+slick/system/sync_manager.py,System,Complete,v1.4,High,watchdog,System Team,2025-06-21,File sync
+slick/system/version_manager.py,System,Complete,v1.2,High,,System Team,2025-06-21,Version control
+slick/config/preferences_loader.py,Config,Complete,v1.1,Medium,,System Team,2025-06-21,Config handler
+slick/training/sessions.py,Training,Complete,v1.1,Medium,,AI Team,2025-06-21,Training framework
+slick/training/folder_restructure.py,Training,Complete,v1.0,Medium,os,System Team,2025-06-21,Structure training
+slick/utils/path_resolver.py,Utility,In Progress,,High,,System Team,2025-06-21,Cross-platform path handling
+slick/hooks/post_install.py,Script,Planned,,Medium,,DevOps,2025-06-21,Post-install setup

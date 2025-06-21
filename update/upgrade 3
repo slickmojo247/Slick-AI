@@ -1,0 +1,48 @@
+3. Unified Services Template (services/template_service.py)
+
+python
+"""
+SERVICE TEMPLATE - Merges:
+- sync_server.py 
+- secure_sync.py
+- start_test_services.py
+"""
+import websockets
+import asyncio
+from threading import Thread
+from slick.core import ServiceManager
+
+class VSCodeIntegration:
+    """From sync_server.py and secure_sync.py"""
+    def __init__(self):
+        self.connections = set()
+        self.manager = ServiceManager()
+        
+    async def broadcast(self, message):
+        for ws in self.connections:
+            await ws.send(message)
+            
+    def start_test_services(self):
+        """From start_test_services.py"""
+        services = [
+            {"name": "vsc-bridge", "command": "python bridge.py"},
+            {"name": "redis", "command": "redis-server"}
+        ]
+        for svc in services:
+            self.manager.add_service(svc)
+            self.manager.start_service(svc['name'])
+
+class TestServiceRunner:
+    """From start_test_services.py"""
+    def __init__(self):
+        self.vsc = VSCodeIntegration()
+        
+    def run(self):
+        Thread(target=self.vsc.start_test_services).start()
+        asyncio.run(self._run_websocket())
+        
+    async def _run_websocket(self):
+        async with websockets.serve(
+            self.vsc.broadcast, "localhost", 8765
+        ):
+            await asyncio.Future()  # Run forever

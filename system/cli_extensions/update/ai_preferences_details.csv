@@ -1,0 +1,2 @@
+tone,humor_level,proactiveness,feedback_frequency,memory_decay_alpha,memory_decay_beta,memory_decay_gamma,contextual_recall_weights
+professional_but_friendly,medium,medium,on_request,0.15,0.12,0.03,"[0.5, 0.3, 0.2]"

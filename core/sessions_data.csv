@@ -1,0 +1,33 @@
+step,command,description,purpose
+1,rm -rf venv,Remove old virtual environment,Clean slate
+2,python3 -m venv venv,Create new virtual environment,Isolated environment
+3,source venv/bin/activate,Activate environment,Linux/Mac activation
+4,pip install --upgrade pip,Upgrade pip,Ensure latest installer
+5,pip install -r requirements.txt,Install project dependencies,Base setup
+6,pip install flask-socketio==5.1.1 gevent==21.12.0,Add dashboard requirements,Web UI support
+7,pip check,Verify no conflicts,Environment health
+
+
+"Continuing Slick AI dashboard integration with CSV processing - here's my environment CSV: [paste CSV]"
+
+category,details
+Project Name,Slick AI Developer Dashboard
+Python Version,3.8
+Core Dependencies,"flask==2.0.3, flask-socketio==5.1.1, gevent==21.12.0"
+Data Tools,"agate==1.13.0, csvkit==2.1.0, openpyxl==3.1.5"
+AI Components,"openai==1.88.0, pydantic==2.10.6"
+Current Issue,"Need to integrate existing data tools with real-time dashboard"
+Key Files,"main.py (CLI), dev_dashboard.py (Web), Slick_AI_Command_Interface.py"
+Special Requirements,"Must maintain CSV processing capabilities during WebSocket ops"
+
+category,details
+Project Name,Slick AI Developer Dashboard
+Python Version,3.8
+Core Dependencies,"fastapi==0.95.2, flask==2.0.3, flask-socketio==5.1.1, gevent==21.12.0, uvicorn==0.22.0"
+Data Tools,"agate==1.13.0, csvkit==2.1.0, openpyxl==3.1.5, sqlite3"
+AI Components,"openai==1.88.0, pydantic==2.10.6, httpx==0.24.1"
+Current Issue,"Integrating real-time WebSocket dashboard with batch CSV processing"
+Key Files,"1_core_application&routing.py, 2_controllers.py, 3_AI.py, 3_endpoints.py, 3_file&memory_system.py, 4_enhanced_file_manager.py, 5_action_framework.py, 6_service_controller.py, 7_think_engine.py"
+Special Requirements,"1. Maintain WebSocket ops during file processing 2. Memory-safe CSV chunking 3. Conflict resolution for VSCode sync"
+Frontend Components,"1_unified_dashboard_template.vue, 2_unified_componet_template.vue, 3_unified_assets.js, 4_unified_styles.css"
+Test Coverage,"2_unified_test_suite.py (pytest)"

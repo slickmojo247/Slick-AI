@@ -1,0 +1,11 @@
+File,Status,Color,Size,Last Modified,Notes
+ai_core/core.py,KEEP,"Green (#4ADE80)",,,"Core system file - preserve"
+ai_core/__init__.py,KEEP,"Green (#4ADE80)",,,"Package initialization"
+ai_core/learning_engine/knowledge_processor.py,UPDATE,"Blue (#60A5FA)",,,"Needs NLP integration"
+ai_core/learning_engine/__init__.py,KEEP,"Green (#4ADE80)",,,"Package initialization"
+ai_core/adapters/ai_adapters.py,MERGE,"Purple (#A78BFA)",,,"Candidate for merging with core"
+ai_core/adapters/__init__.py,KEEP,"Green (#4ADE80)",,,"Package initialization"
+ai_core/config.yaml,UPDATE,"Blue (#60A5FA)",,,"Needs environment variables"
+ai_core/README.md,KEEP,"Green (#4ADE80)",,,"Documentation - preserve"
+ai_core/tests/,REVIEW,"Pink (#F472B6)",,,"Needs test coverage expansion"
+ai_core/legacy/,DELETE,"Red (#F87171)",,,"Deprecated code - remove"

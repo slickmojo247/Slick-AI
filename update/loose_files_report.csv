@@ -1,0 +1,31 @@
+Path,Type,Status,Version,Priority,Owner,Dependencies,LastUpdated,Notes
+cli/__main__.py,Module,Complete,v1.3,High,CLI Team,"click, httpx",2025-06-20,Main CLI entrypoint with async support
+web_interface/web_server.py,Backend,Complete,v1.2,High,Core Team,"FastAPI, uvicorn",2025-06-20,WebSocket routes
+system/sync_manager.py,Module,Complete,v1.4,High,System Team,"watchdog, requests",2025-06-20,Fixed race condition
+deepseek_integration.py,Integration,Complete,v1.3,High,AI Team,aiohttp,2025-06-18,Full API client
+api/security.py,Utility,Complete,v1.4,Critical,Security Team,fastapi,2025-06-18,API key verification
+main.py,Application,Complete,v1.4,High,Core Team,fastapi,2025-06-18,FastAPI application
+cli/plain_knowledge.py,Module,Complete,v1.2,Medium,AI Team,,2025-06-18,Text knowledge management
+cli/learn_mode.py,Module,Complete,v1.1,Medium,AI Team,,2025-06-18,Interactive learning
+cli/glossary_sync.py,Module,Complete,v1.1,Low,AI Team,csv,2025-06-18,CSV glossary importer
+cli/report.py,Module,Complete,v1.1,Medium,System Team,click,2025-06-18,Project analysis
+api/routes/core.py,Module,Complete,v1.3,High,Core Team,fastapi,2025-06-18,WebSocket endpoints
+api/routes/vscode.py,Module,Complete,v1.2,High,Integration Team,fastapi,2025-06-18,VSCode sync
+api/routes/ai.py,Module,Complete,v1.3,High,AI Team,openai,2025-06-18,AI routing logic
+api/files.py,Module,Complete,v1.2,High,System Team,fastapi,2025-06-18,File management
+vscode_integration/secure_sync.py,Integration,Complete,v1.2,High,Integration Team,"AESGCM, JWT",2025-06-18,VSCode WebSocket sync
+cli/order_manager.py,Module,Needs Testing,v0.9,Medium,System Team,threading,2025-06-18,Background tasks
+api/routes/telegram.py,Module,Needs Testing,v0.9,High,Integration Team,telegram,2025-06-18,Telegram integration
+api/routes/bot.py,Module,Needs Testing,v0.9,High,Integration Team,telegram,2025-06-18,Telegram bot setup
+cli/help.py,Module,Needs Update,v0.8,Medium,Doc Team,rich,2025-06-18,Command documentation
+cli/deploy_tools.py,Module,Needs Work,v0.5,Low,DevOps Team,,2025-06-18,Placeholder implementation
+cli/visualize/,Directory,Not Started,,Low,,,2025-06-18,Visualization tools
+cli/plugins/,Directory,Not Started,,Medium,,,2025-06-18,Plugin system
+tests/cli/,Directory,Not Started,,High,,,2025-06-18,CLI test cases
+docs/cli_guide.md,Documentation,Not Started,,Medium,,,2025-06-18,CLI documentation
+examples/,Directory,Not Started,,Low,,,2025-06-18,Usage examples
+cli/absorb.py,Module,Not Started,,Medium,,,2025-06-18,Knowledge absorption
+cli/recall.py,Module,Not Started,,Medium,,,2025-06-18,Memory recall system
+cli/transform.py,Module,Not Started,,Low,,,2025-06-18,Data transformation
+cli/structure.py,Module,Not Started,,Medium,,,2025-06-18,Project structuring
+web_interface/dashboard_console.py,Backend,Deprecated,v0.9,Medium,Core Team,flask,2025-06-15,Being phased out

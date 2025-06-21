@@ -1,0 +1,5 @@
+command_name,description,enabled
+AI_QUERY,Run AI query to retrieve responses,True
+EXPLORER_TOGGLE,Toggle Galactic Explorer UI,True
+EXPLORER_STATUS,Check the status of the Galactic Explorer UI,True
+FLASK_SERVER_RESTART,Restart Flask server,False

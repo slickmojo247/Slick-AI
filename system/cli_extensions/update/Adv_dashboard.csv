@@ -1,0 +1,11 @@
+Component,Type,Status,Version,Category,Location,Dependencies,Features,Framework,Instructions
+DashboardCore,Core,Active,v2.1,UI,control_hub/dashboard/core.js,"Vue 3, CodeMirror",Main layout container,Vue 3,"Upgrade to Vue 3 composition API"
+CodeEditor,Component,Active,v1.4,Editor,control_hub/dashboard/components/Editor.vue,"CodeMirror 6, Monaco",Syntax highlighting,Web Component,"Add LSP integration"
+HelpSystem,Component,Active,v1.2,Docs,control_hub/dashboard/components/Help.vue,"Marked.js, Prism",Searchable docs,Vue SFC,"Connect to think sessions"
+ThinkSessionViewer,Component,New,v0.1,Knowledge,control_hub/dashboard/components/Sessions.vue,,Session file display,Vue 3,"Parse TXT files to HTML"
+AIConsole,Component,Active,v1.3,Terminal,control_hub/dashboard/components/Console.vue,"XTerm.js, FastAPI",CLI emulator,Web Component,"Add auth layer"
+RealTimeSync,Service,Active,v1.2,Sync,control_hub/dashboard/services/sync.js,"WebSockets, JWT",VSCode-web sync,Vanilla JS,"Implement conflict resolution"
+SecurityMiddleware,Utility,Active,v1.1,Security,control_hub/dashboard/middleware/auth.js,"JWT, CryptoJS",API protection,Node.js,"Add rate limiting"
+ThemeSystem,Component,Active,v1.3,UI,control_hub/dashboard/components/Theme.vue,CSS3,Cosmic theme vars,Vue 3,"Add theme export"
+CommandPalette,Component,Active,v1.2,UI,control_hub/dashboard/components/Palette.vue,Fuse.js,Fuzzy search,Vue 3,"Connect to Telegram"
+StateManager,Core,Active,v1.4,State,control_hub/dashboard/store/,Pinia,Global state,Pinia,"Add undo/redo"

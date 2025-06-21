@@ -1,0 +1,15 @@
+Command,Args,Description
+query,<natural language>,Processes natural language queries
+mode,<mode_name>,Switches AI personality mode
+exit,None,Shuts down system
+help,[command],Shows help information
+reload,<component>,Reloads components
+think,<text>,Stores ThinkSession entry
+inject,<file.csv>,Injects CSV data
+scan,<folder>,Scans directory structure
+validate,None,Runs consistency checks
+sync,<target>,Syncs components
+update,None,Runs update script
+launch,<mode>,Starts in different mode
+load_profile,<profile>,Loads personality profile
+new_cmd,<arg>,Description

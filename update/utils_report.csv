@@ -1,0 +1,5 @@
+Module,Path,Status,Version,Priority,Dependencies,Features,Notes
+SystemDataExporter,utils/data_exporter.py,Complete,v1.0,Medium,"pandas",CSV report generation,Exports memory/knowledge data
+EventBus,utils/event_bus.py,Complete,v1.1,High,"logging",Pub/sub system,Tracks event history
+MemoryResetManager,utils/memory_reset.py,Complete,v1.2,High,"pickle, zlib",Memory snapshotting,Handles soft/hard resets
+Security,utils/security.py,Complete,v1.3,Critical,"FastAPI",API key validation,Integrates with FastAPI routes

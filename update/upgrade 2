@@ -1,0 +1,43 @@
+2. Unified Utils Template (utils/template_utils.py)
+
+python
+"""
+UTILS TEMPLATE - Merges:
+- key_vault.py
+- visualization.py
+- secure_sync.py
+"""
+from cryptography.fernet import Fernet
+import os
+
+class KeyVault:
+    """From key_vault.py"""
+    def __init__(self):
+        self.key = os.getenv('ENCRYPTION_KEY')
+        
+    def get_key(self, service_name):
+        return Fernet(self.key).decrypt(
+            os.getenv(service_name).encode()
+        
+class VisualTools:
+    """From visualization.py"""
+    @staticmethod
+    def generate_knowledge_graph(session_id):
+        return f"Graph for {session_id}"
+        
+    @staticmethod 
+    def replay_training(session_id):
+        return f"Replaying {session_id}"
+
+class SecureSync:
+    """From secure_sync.py"""
+    def __init__(self):
+        self.vault = KeyVault()
+        
+    async def connect(self, token):
+        if not self._validate_token(token):
+            raise ValueError("Invalid token")
+        return True
+        
+    def _validate_token(self, token):
+        return token == self.vault.get_key('SYNC_TOKEN')

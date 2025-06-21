@@ -1,0 +1,12 @@
+Path,Size_KB,Type,Suggested_Location
+deploy_tools.py,0.27,Python Code,Uncategorized
+glossary_sync.py,0.78,Python Code,Uncategorized
+learn_mode.py,0.77,Python Code,Uncategorized
+order_manager.py,1.44,Python Code,Uncategorized
+plain_knowledge.py,3.73,Python Code,Uncategorized
+report_project.py,2.09,Python Code,Uncategorized
+see_monitor.py,1.47,Python Code,Uncategorized
+slick_cli.py,3.54,Python Code,cli/
+step_trainer.py,2.17,Python Code,Uncategorized
+tools.py,0.34,Python Code,Uncategorized
+__init__,0.44,Other,Uncategorized

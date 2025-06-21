@@ -1,0 +1,4 @@
+Module,Directory,File,Status,Version,Priority,LastUpdated,Owner,Notes
+Shared,shared/auth/,key_manager.py,Active,v1.2,High,2025-06-17,Security Team,"Master key management system"
+Shared,shared/auth/,encryption_service.py,Active,v1.3,Critical,2025-06-17,Security Team,"AES-GCM encryption/decryption"
+Shared,shared/,think_session_protection.py,New,v0.0,Medium,2025-06-17,AI Team,"Think session security (empty)"

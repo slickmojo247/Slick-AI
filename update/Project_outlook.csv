@@ -1,0 +1,18 @@
+Component,Connection,Connected To,Connection Type,Description,Port
+VSCode,<->,SLICK AI,WebSocket,Two-way communication for code interaction,
+Web Interface,<->,SLICK AI,HTTP/REST,User controls via browser,
+SLICK AI,->,Telegram Bot,API,Outbound API calls to Telegram,
+Telegram Bot,->,OpenAI,API,Forwarding requests with API key,
+Telegram Bot,->,DeepSeek,API,Forwarding requests with API key,
+WO Mic (Phone),->,Windows Computer,TCP/IP,Audio streaming from phone to PC,8125
+Windows Computer,->,SLICK AI,Internal Pipe,Speech-to-text processing,
+User,->,VSCode,Input,Direct control via IDE,
+User,->,Web Interface,Input,Direct control via browser,
+User,->,SLICK AI,Direct,CLI or other direct access methods,
+User,->,WO Mic,Audio Input,Voice commands via phone,
+Component,Config Setting,Example Value,Purpose
+API Orchestrator,blend_mode,balanced,"balanced/creative/technical"
+Response Blender,weight_openai,0.7,Primary response weight
+Response Blender,weight_deepseek,0.3,Complementary weight
+DeepSeek API,complement_type,validate,"validate/expand/counter"
+Telegram Bot,fallback_source,deepseek,When OpenAI fails

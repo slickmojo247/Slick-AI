@@ -1,0 +1,27 @@
+Path,Type,Status,Component,Optimization
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/C:,Directory,Other Directory,-,Review Structure
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/C:\Users\slick\OneDrive\Desktop\slick_ai_system\backup,Directory,Other Directory,-,Review Structure
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/__pycache__,Directory,Other Directory,-,Review Structure
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/correct_input.py,Python Script,File,Python Script,No Change Needed
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/deploy_tools.py,Python Script,File,Python Script,No Change Needed
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/glossary_sync.py,Python Script,File,Python Script,No Change Needed
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/help.py,Python Script,File,Python Script,No Change Needed
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/learn_mode.py,Python Script,File,Python Script,No Change Needed
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/order_manager.py,Python Script,File,Python Script,No Change Needed
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/plain_knowledge.py,Python Script,File,Python Script,No Change Needed
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/report_project.py,Python Script,File,Python Script,No Change Needed
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/see_monitor.py,Python Script,File,Python Script,No Change Needed
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/slick_cli.py,Python Script,File,Python Script,No Change Needed
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/status.py,Python Script,File,Python Script,No Change Needed
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/step_trainer.py,Python Script,File,Python Script,No Change Needed
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/sync_vscode.py,Python Script,File,Python Script,No Change Needed
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/tools.py,Python Script,File,Python Script,No Change Needed
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/__init__,Other,File,Other,No Change Needed
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/C:/Users,Directory,Other Directory,-,Review Structure
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/C:/Users/slick,Directory,Other Directory,-,Review Structure
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/C:/Users/slick/OneDrive,Directory,Other Directory,-,Review Structure
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/C:/Users/slick/OneDrive/Desktop,Directory,Other Directory,-,Review Structure
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/C:/Users/slick/OneDrive/Desktop/slick_ai_system,Directory,Other Directory,-,Review Structure
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/C:/Users/slick/OneDrive/Desktop/slick_ai_system/backup,Directory,Other Directory,-,Review Structure
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/C:/Users/slick/OneDrive/Desktop/slick_ai_system/backup/project_report_20250612_192009.csv,Data,File,Data,No Change Needed
+/mnt/c/Users/slick/OneDrive/Desktop/slick_ai_system/cli/C:\Users\slick\OneDrive\Desktop\slick_ai_system\backup/project_report_20250613_1435.csv,Data,File,Data,No Change Needed

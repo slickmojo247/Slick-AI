@@ -1,0 +1,456 @@
+# AI Memory and Interaction Core
+import json
+import pickle
+import zlib
+import socket
+import hashlib
+import datetime
+from pathlib import Path
+from dateutil.parser import parse
+from concurrent.futures import ThreadPoolExecutor
+from contextlib import contextmanager
+from typing import Dict, Any, Optional, List, Tuple
+
+class EmotionProcessor:
+    """Enhanced emotion processing with multi-modal analysis"""
+    def __init__(self):
+        self.emotion_map = {
+            'happy': ['joy', 'excitement', 'contentment'],
+            'sad': ['grief', 'loneliness', 'disappointment'],
+            'angry': ['rage', 'frustration', 'annoyance'],
+            'neutral': ['calm', 'indifference', 'uncertainty']
+        }
+    
+    def process(self, text: str, voice_tone: Optional[str] = None) -> str:
+        """Analyze text and optional voice tone to determine emotion"""
+        if not text:
+            return "neutral"
+        
+        text = text.lower()
+        for emotion, indicators in self.emotion_map.items():
+            if any(indicator in text for indicator in indicators):
+                return emotion
+        
+        # Fallback to neutral if no clear emotion detected
+        return "neutral"
+
+class KnowledgeGraph:
+    """Enhanced knowledge graph with context-aware querying"""
+    def __init__(self):
+        self.graph = {}
+        self.context_weights = {'recent': 0.6, 'related': 0.3, 'popular': 0.1}
+    
+    def add_node(self, entity: str, attributes: Dict, relations: List[Tuple[str, str]]):
+        """Add a node to the knowledge graph"""
+        if entity not in self.graph:
+            self.graph[entity] = {'attributes': {}, 'relations': []}
+        
+        self.graph[entity]['attributes'].update(attributes)
+        for rel_type, target in relations:
+            if (rel_type, target) not in self.graph[entity]['relations']:
+                self.graph[entity]['relations'].append((rel_type, target))
+    
+    def query(self, text: str, context: Optional[Dict] = None) -> str:
+        """Context-aware query of the knowledge graph"""
+        if not context:
+            context = {}
+        
+        # Simple keyword matching for this implementation
+        matches = []
+        for entity, data in self.graph.items():
+            if entity.lower() in text.lower():
+                matches.append(entity)
+            elif any(attr_val.lower() in text.lower() 
+                    for attr_val in data['attributes'].values()):
+                matches.append(entity)
+        
+        if matches:
+            return f"Found related information about: {', '.join(matches)}"
+        return "No matching information found in knowledge graph"
+
+class SentimentAnalyzer:
+    """Advanced sentiment analysis with confidence scoring"""
+    def __init__(self):
+        self.lexicon = {
+            'positive': ['happy', 'great', 'awesome', 'fantastic'],
+            'negative': ['sad', 'terrible', 'awful', 'horrible'],
+            'neutral': ['okay', 'fine', 'whatever', 'meh']
+        }
+    
+    def analyze(self, text: str) -> Tuple[str, float]:
+        """Analyze text sentiment with confidence score"""
+        if not text:
+            return ("neutral", 1.0)
+        
+        text = text.lower()
+        scores = {'positive': 0, 'negative': 0, 'neutral': 0}
+        
+        for sentiment, words in self.lexicon.items():
+            for word in words:
+                if word in text:
+                    scores[sentiment] += 1
+        
+        total = sum(scores.values()) or 1  # Avoid division by zero
+        max_sentiment = max(scores, key=scores.get)
+        confidence = scores[max_sentiment] / total
+        
+        return (max_sentiment, confidence)
+
+class VoiceInterface:
+    """Enhanced voice interface with simulated listening"""
+    def __init__(self, port: int = 8125):
+        self.port = port
+        self.buffer = []
+    
+    def listen(self) -> str:
+        """Listen for voice input (simulated)"""
+        return "Voice command placeholder"
+    
+    def listen_wo_mic(self) -> str:
+        """Alternative listening method without microphone"""
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.bind(('0.0.0.0', self.port))
+            s.listen()
+            print(f"Listening on port {self.port} for mic input...")
+            conn, addr = s.accept()
+            with conn:
+                print('Connected by', addr)
+                while True:
+                    data = conn.recv(1024)
+                    if not data:
+                        break
+                    heard = data.decode()
+                    self.buffer.append(heard)
+                    return heard
+        return ""
+
+class MemoryNode:
+    """Core memory unit with decay and sensory context"""
+    def __init__(self, event_id: str, embeddings: Any, timestamp: str,
+                 sensory_context: Dict, emotional_weight: float):
+        self.event_id = event_id
+        self.embeddings = embeddings
+        self.timestamp = timestamp
+        self.sensory_context = sensory_context
+        self.emotional_weight = emotional_weight
+    
+    @staticmethod
+    def decay_weights(memory_weight: float, access_frequency: float,
+                     emotional_valence: float, time_elapsed: float,
+                     alpha: float, beta: float, gamma: float) -> float:
+        """Calculate memory decay based on various factors"""
+        return (alpha * access_frequency) + (beta * emotional_valence) - (gamma * time_elapsed)
+
+class MemoryBank:
+    """Enhanced memory storage with decay and contextual recall"""
+    def __init__(self, decay_alpha: float = 0.1, decay_beta: float = 0.1,
+                 decay_gamma: float = 0.05, context_weights: List[float] = None):
+        self.long_term = {}
+        self.code_snippets = {'python': {}, 'json': {}, 'js': {}, 'html': {}}
+        self.decay_alpha = decay_alpha
+        self.decay_beta = decay_beta
+        self.decay_gamma = decay_gamma
+        self.context_weights = context_weights or [0.5, 0.3, 0.2]
+    
+    def add_memory(self, event: str, category: str = 'event',
+                  importance: float = 0.7, sensory_context: Dict = None) -> str:
+        """Add a new memory with metadata"""
+        timestamp = datetime.datetime.now().isoformat()
+        memory_id = f"mem_{len(self.long_term) + 1}"
+        entry = {
+            'id': memory_id,
+            'content': event,
+            'timestamp': timestamp,
+            'category': category,
+            'importance': importance,
+            'sensory_context': sensory_context or {},
+            'decayed_importance': importance
+        }
+        self.long_term[memory_id] = entry
+        return memory_id
+    
+    def apply_decay(self):
+        """Apply memory decay based on time and importance"""
+        current_time = datetime.datetime.now()
+        for mem_id, mem in list(self.long_term.items()):
+            mem_time = parse(mem['timestamp'])
+            age_days = (current_time - mem_time).days
+            
+            decay_factor = (self.decay_alpha + 
+                          (self.decay_beta * mem['importance']) + 
+                          (self.decay_gamma * age_days))
+            mem['decayed_importance'] = mem['importance'] * (0.99 ** (decay_factor * age_days))
+            
+            if mem['decayed_importance'] < 0.05:
+                del self.long_term[mem_id]
+    
+    def contextual_recall(self, query: str, context: Dict) -> List[Dict]:
+        """Recall memories relevant to query and context"""
+        results = []
+        for mem_id, mem in self.long_term.items():
+            relevance = 0
+            
+            # Content relevance
+            if any(term in mem['content'] for term in query.split()):
+                relevance += self.context_weights[0]
+                
+            # Contextual relevance
+            if any(ctx in str(context) for ctx in mem['sensory_context']):
+                relevance += self.context_weights[1]
+                
+            # Recency relevance
+            mem_time = parse(mem['timestamp'])
+            recency = 1 - min(1, (datetime.datetime.now() - mem_time).days / 365)
+            relevance += recency * self.context_weights[2]
+                
+            relevance *= mem['decayed_importance']
+            
+            if relevance > 0.1:
+                results.append((mem_id, relevance))
+        
+        results.sort(key=lambda x: x[1], reverse=True)
+        return [self.long_term[mem_id] for mem_id, _ in results[:5]]
+
+class MemorySystem:
+    """Complete memory system with multiple storage types"""
+    def __init__(self, user_profile: 'UserProfile', ai_preferences: 'AIResponsePreferences'):
+        self.user_profile = user_profile
+        self.ai_preferences = ai_preferences
+        self.nodes = []
+        self.vector_db = PlaceholderDB()
+        self.knowledge_graph = KnowledgeGraph()
+        self.procedural = PlaceholderSkillRepo()
+        self.cognitive_ranker = PlaceholderCognitiveRanker()
+        self.memory_bank = MemoryBank(
+            decay_alpha=ai_preferences.memory_decay_alpha,
+            decay_beta=ai_preferences.memory_decay_beta,
+            decay_gamma=ai_preferences.memory_decay_gamma,
+            context_weights=ai_preferences.contextual_recall_weights
+        )
+    
+    def add_memory_node(self, node: MemoryNode):
+        """Add a memory node to the system"""
+        self.nodes.append(node)
+        self.memory_bank.add_memory(
+            event=str(node.embeddings),
+            category='node',
+            importance=node.emotional_weight,
+            sensory_context=node.sensory_context
+        )
+    
+    def contextual_recall(self, query: str, user_context: Dict, depth: int = 3) -> List:
+        """Recall information from all memory subsystems"""
+        episodic = self.vector_db.search(query, filter=user_context.get('location'))
+        semantic = self.knowledge_graph.query(query)
+        procedural = self.procedural.match_capability(query)
+        
+        results = self.cognitive_ranker(
+            query, 
+            memories=[episodic, semantic, procedural],
+            weights=self.ai_preferences.contextual_recall_weights
+        )
+        return results[:depth]
+
+class MemoryProgressManager:
+    """Memory state persistence with compression and versioning"""
+    def __init__(self, save_dir: str = "memory_saves"):
+        self.save_dir = Path(save_dir)
+        self.save_dir.mkdir(parents=True, exist_ok=True)
+        self.current_save_version = "1.2"
+        self.executor = ThreadPoolExecutor(max_workers=2)
+    
+    def save_memory_state(self, memory_bank: Dict[str, Any], immediate: bool = False) -> str:
+        """Save memory state with progress tracking"""
+        save_data = {
+            'version': self.current_save_version,
+            'timestamp': datetime.datetime.now().isoformat(),
+            'memory': memory_bank,
+            'checksum': self._calculate_memory_checksum(memory_bank)
+        }
+        
+        save_path = self._generate_save_path()
+        
+        if immediate:
+            return self._save_to_disk(save_path, save_data)
+        else:
+            self.executor.submit(self._save_to_disk, save_path, save_data)
+            return str(save_path)
+    
+    def load_memory_state(self, save_path: Optional[str] = None) -> Dict[str, Any]:
+        """Load memory state from save file"""
+        if save_path is None:
+            save_path = self._find_latest_save()
+            
+        if not Path(save_path).exists():
+            raise FileNotFoundError(f"No save file found at {save_path}")
+            
+        with open(save_path, 'rb') as f:
+            compressed = f.read()
+            save_data = pickle.loads(zlib.decompress(compressed))
+                
+        current_checksum = self._calculate_memory_checksum(save_data['memory'])
+        if current_checksum != save_data['checksum']:
+            raise ValueError("Memory checksum verification failed")
+            
+        return save_data['memory']
+    
+    def _save_to_disk(self, save_path: Path, save_data: Dict) -> str:
+        """Internal method to handle actual file saving"""
+        try:
+            compressed = zlib.compress(pickle.dumps(save_data))
+            temp_path = save_path.with_suffix('.tmp')
+            
+            with open(temp_path, 'wb') as f:
+                f.write(compressed)
+            
+            temp_path.replace(save_path)
+            return str(save_path)
+        except Exception as e:
+            print(f"Error saving memory: {str(e)}")
+            raise
+    
+    def _generate_save_path(self) -> Path:
+        """Generate timestamped save path"""
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        return self.save_dir / f"memory_save_{timestamp}.msav"
+    
+    def _find_latest_save(self) -> str:
+        """Find most recent save file"""
+        saves = list(self.save_dir.glob("memory_save_*.msav"))
+        if not saves:
+            raise FileNotFoundError("No save files found")
+        return str(max(saves, key=lambda f: f.stat().st_mtime))
+    
+    def _calculate_memory_checksum(self, memory_bank: Dict) -> str:
+        """Calculate SHA256 checksum of memory contents"""
+        sha256 = hashlib.sha256()
+        memory_bytes = json.dumps(memory_bank, sort_keys=True).encode('utf-8')
+        sha256.update(memory_bytes)
+        return sha256.hexdigest()
+
+class UserProfile:
+    """User profile with cognitive and personal attributes"""
+    def __init__(self, name: str, cognitive_preferences: Dict, personality_traits: Dict,
+                 interests: List[str], habits: List[str], health_metrics: Dict, privacy_settings: Dict):
+        self.name = name
+        self.cognitive_preferences = cognitive_preferences
+        self.personality_traits = personality_traits
+        self.interests = interests
+        self.habits = habits
+        self.health_metrics = health_metrics
+        self.privacy_settings = privacy_settings
+    
+    def to_dict(self) -> Dict:
+        """Convert profile to dictionary"""
+        return {
+            "name": self.name,
+            "cognitive_preferences": self.cognitive_preferences,
+            "personality_traits": self.personality_traits,
+            "interests": self.interests,
+            "habits": self.habits,
+            "health_metrics": self.health_metrics,
+            "privacy_settings": self.privacy_settings
+        }
+
+class AIResponsePreferences:
+    """AI response customization preferences"""
+    def __init__(self, tone: str, humor_level: str, proactiveness: str, feedback_frequency: str,
+                 memory_decay_alpha: float = 0.1, memory_decay_beta: float = 0.1, 
+                 memory_decay_gamma: float = 0.05, contextual_recall_weights: List[float] = None):
+        self.tone = tone
+        self.humor_level = humor_level
+        self.proactiveness = proactiveness
+        self.feedback_frequency = feedback_frequency
+        self.memory_decay_alpha = memory_decay_alpha
+        self.memory_decay_beta = memory_decay_beta
+        self.memory_decay_gamma = memory_decay_gamma
+        self.contextual_recall_weights = contextual_recall_weights or [0.4, 0.3, 0.3]
+    
+    def to_dict(self) -> Dict:
+        """Convert preferences to dictionary"""
+        return {
+            "tone": self.tone,
+            "humor_level": self.humor_level,
+            "proactiveness": self.proactiveness,
+            "feedback_frequency": self.feedback_frequency,
+            "memory_decay_alpha": self.memory_decay_alpha,
+            "memory_decay_beta": self.memory_decay_beta,
+            "memory_decay_gamma": self.memory_decay_gamma,
+            "contextual_recall_weights": self.contextual_recall_weights,
+        }
+
+class PersonalAI:
+    """Complete AI personality with memory and interaction capabilities"""
+    def __init__(self, human_user_name: str, ai_profile: UserProfile, ai_preferences: AIResponsePreferences):
+        self.human_user_name = human_user_name
+        self.ai_profile = ai_profile
+        self.ai_preferences = ai_preferences
+        self.memory = MemorySystem(ai_profile, ai_preferences)
+        self.voice_interface = VoiceInterface()
+        self.emotion_processor = EmotionProcessor()
+        self.sentiment_analyzer = SentimentAnalyzer()
+        self.memory_progress = MemoryProgressManager()
+    
+    @contextmanager
+    def conversation(self, mode: str = 'balanced'):
+        """Context manager for conversation sessions"""
+        yield ConversationSession(self.memory, self.human_user_name, self.ai_profile.name)
+    
+    def save_state(self) -> str:
+        """Save current memory state"""
+        return self.memory_progress.save_memory_state(self.memory.memory_bank.long_term)
+
+class ConversationSession:
+    """Active conversation session with memory access"""
+    def __init__(self, memory_system: MemorySystem, human_user_name: str, ai_name: str):
+        self.memory = memory_system
+        self.human_user_name = human_user_name
+        self.ai_name = ai_name
+    
+    def query(self, text: str) -> str:
+        """Process a user query with contextual recall"""
+        if text.lower() == f"yo {self.ai_name.lower()}":
+            return f"sup {self.human_user_name}"
+        return self.memory.contextual_recall(text, {})
+
+# Placeholder implementations for dependencies
+class PlaceholderDB:
+    def search(self, query, filter=None): return [f"episodic_result_for_{query}"]
+    def query(self, query_str): return [f"semantic_result_for_{query_str}"]
+    
+class PlaceholderSkillRepo:
+    def match_capability(self, query): return [f"skill_for_{query}"]
+    def add_skill(self, skill): print(f"Skill {skill.__name__} added to procedural memory.")
+    
+class PlaceholderCognitiveRanker:
+    def __call__(self, query, memories, weights): return memories[0]
+
+# Example usage
+if __name__ == "__main__":
+    # Create AI instance
+    ai_profile = UserProfile(
+        name="Slick",
+        cognitive_preferences={"learning_style": "visual", "memory_bias": "recent"},
+        personality_traits={"curiosity": 0.9, "analytical": 0.8},
+        interests=["AI research", "quantum physics"],
+        habits=["daily learning"],
+        health_metrics={"sleep_avg": 7.5},
+        privacy_settings={"data_retention": "365_days"}
+    )
+    
+    ai_prefs = AIResponsePreferences(
+        tone="professional",
+        humor_level="medium",
+        proactiveness="medium",
+        feedback_frequency="on_request"
+    )
+    
+    ai = PersonalAI("Rick", ai_profile, ai_prefs)
+    
+    # Example interaction
+    with ai.conversation() as session:
+        response = session.query("What do you know about quantum physics?")
+        print(response)
+    
+    # Save state
+    ai.save_state()

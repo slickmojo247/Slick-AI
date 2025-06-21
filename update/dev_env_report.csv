@@ -1,0 +1,2 @@
+Directory,File,Action,Color,Status,Instructions,Version,Dependencies
+dev_env,vscode_launcher.py,Update,Blue (#60A5FA),Active,"VS Code development environment launcher","v1.1","subprocess, pathlib"

@@ -1,0 +1,10 @@
+:root {
+  --cosmic-primary: #7e57c2;
+  --cosmic-secondary: #42a5f5;
+  --cosmic-bg: #121212;
+}
+
+body {
+  background: var(--cosmic-bg);
+  font-family: 'Courier New', monospace;
+}

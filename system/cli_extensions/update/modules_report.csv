@@ -1,0 +1,5 @@
+Module,Directory,File,Status,Version,Priority,LastUpdated,Owner,Notes
+Modules,modules/,emotion_processor.py,Draft,v0.1,Medium,2025-06-17,NLP Team,"Basic emotion processing (placeholder)"
+Modules,modules/,knowledge_graph.py,Draft,v0.1,High,2025-06-17,AI Team,"Knowledge graph query system (stub)"
+Modules,modules/,sentiment_analysis.py,Draft,v0.1,Medium,2025-06-17,NLP Team,"Sentiment analyzer (placeholder)"
+Modules,modules/,voice_interface.py,Draft,v0.1,High,2025-06-17,Audio Team,"Voice command interface (stub)"

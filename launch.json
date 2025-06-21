@@ -1,0 +1,13 @@
+{
+    "name": "SLICK AI Terminal",
+    "type": "python",
+    "request": "launch",
+    "program": "${workspaceFolder}/main.py",
+    "console": "integratedTerminal"
+}
+{
+    "name": "Debug Command Handler",
+    "type": "python",
+    "request": "launch",
+    "module": "core.Slick_AI_Command_Interface"
+}

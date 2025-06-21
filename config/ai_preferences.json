@@ -1,0 +1,25 @@
+{
+  "default_mode": "balanced",
+  "provider_weights": {
+    "openai": 0.7,
+    "deepseek": 0.3
+  },
+  "personality_settings": {
+    "balanced": {
+      "creativity": 0.5,
+      "precision": 0.5
+    },
+    "technical": {
+      "creativity": 0.2,
+      "precision": 0.9
+    },
+    "creative": {
+      "creativity": 0.8,
+      "precision": 0.3
+    },
+    "homer": {
+      "humor_level": 0.9,
+      "simplicity": 0.8
+    }
+  }
+}

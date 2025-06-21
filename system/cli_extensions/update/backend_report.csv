@@ -1,0 +1,11 @@
+File,Status,Color,Size,Last Modified,Notes
+backend/core.py,KEEP,"Green (#4ADE80)",,,"Core backend service - preserve"
+backend/__init__.py,KEEP,"Green (#4ADE80)",,,"Package initialization"
+backend/ai_integration.py,MERGE,"Purple (#A78BFA)",,,"Merged into core.py"
+backend/app.py,UPDATE,"Blue (#60A5FA)",,,"Needs to use create_app() factory"
+backend/help_me.py,KEEP,"Green (#4ADE80)",,,"Command documentation - preserve"
+backend/toggle_commands.py,MERGE,"Purple (#A78BFA)",,,"Merged into CommandManager"
+backend/requirements.txt,KEEP,"Green (#4ADE80)",,,"Dependencies - preserve"
+backend/tests/,REVIEW,"Pink (#F472B6)",,,"Needs test coverage expansion"
+backend/static/,DELETE,"Red (#F87171)",,,"Deprecated - use CDN instead"
+backend/templates/,UPDATE,"Blue (#60A5FA)",,,"Needs modernization"

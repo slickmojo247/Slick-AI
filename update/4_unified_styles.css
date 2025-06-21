@@ -1,0 +1,60 @@
+/* Merges: style.css + Cosmic styles + dashboard styles */
+
+:root {
+  --cosmic-primary: #5d8bf4;
+  --cosmic-secondary: #00c9ff;
+  --cosmic-dark: #141432;
+  --cosmic-light: rgba(93, 139, 244, 0.2);
+}
+
+/* Cosmic Theme Base */
+.cosmic-theme {
+  background: linear-gradient(135deg, var(--cosmic-dark), #0f0f28);
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Command Cards (from Cosmic_back.html) */
+.command-card {
+  background: rgba(20, 20, 50, 0.7);
+  border: 1px solid var(--cosmic-light);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 10px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Service Panel (from ServiceControlPanel.vue) */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+/* AI Console (from SLICK.html) */
+.ai-console textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid var(--cosmic-primary);
+}
+
+/* Help System (from HelpPanel.vue) */
+.help-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--cosmic-light);
+}
+
+/* Animation (from script.js) */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+.cosmic-star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite;
+}

@@ -1,0 +1,18 @@
+Test Module,Type,Category,Status,Priority,Coverage Area,Dependencies,Notes
+check_project_structure.py,Structural,Unit,Complete,High,Project Layout,"os, csv",Validates core directory/file structure
+conftest.py,Fixture,Support,Complete,High,All Tests,"pytest, FastAPI",Shared test fixtures/mocks
+test_full_flow.py,Integration,End-to-End,Complete,Medium,Full System,"unittest, asyncio",Tests voice-to-AI workflow
+test_service_control.py,Integration,API,Complete,High,Services,"pytest, FastAPI",Service lifecycle testing
+integration_tests.py,Integration,Connectivity,Complete,High,API Clients,"",Third-party API connectivity checks
+mock_openai.py,Mock,Support,Complete,Medium,AI Tests,"FastAPI, uvicorn",OpenAI API mock server
+post_reset_validation.py,Validation,System,Complete,Medium,Core Modules,"importlib",Post-reset system checks
+start_test_services.py,Utility,Support,Complete,Low,Test Env,"subprocess, threading",Test service manager
+test_ai_query.py,Unit,AI,Complete,High,AI Queries,"pytest",AI query endpoint tests
+test_commands.py,Unit,CLI,Complete,High,Commands,"pytest",Command system tests
+test_structure.py,Structural,Unit,Complete,High,Project Layout,"pytest, os",Directory/file existence checks
+test_ai_router.py,Unit,AI,Complete,High,AI Routing,"pytest",AI provider routing logic
+test_memory.py,Unit,Memory,Not Started,High,Memory System,"",Empty - needs memory tests
+test_routes.py,Unit,API,Not Started,High,API Endpoints,"",Empty - needs route tests
+test_tools.py,Unit,Utilities,Not Started,Medium,CLI Tools,"",Empty - needs tools tests
+test_telegram_bot.py,Integration,Telegram,Not Started,High,Bot Integration,""
+test_vscode_sync.py,Integration,VSCode,Not Started,High,Editor Sync,""

@@ -1,0 +1,70 @@
+1. Unified Test Template (tests/template_test.py)
+
+python
+"""
+TEST TEMPLATE - Merges: 
+- test_ai_router.py 
+- test_service_control.py
+- integration_tests.py
+- post_reset_validation.py
+"""
+import pytest
+import os
+from unittest.mock import AsyncMock, MagicMock
+from slick.core import AIRouter, ServiceManager
+from slick.utils import ProjectValidator
+
+# Shared Fixtures
+@pytest.fixture
+def mock_services():
+    """Combined mock services from mock_openai.py and test services"""
+    services = {
+        'openai': AsyncMock(return_value="Mock OpenAI response"),
+        'deepseek': AsyncMock(return_value="Mock DeepSeek response"),
+        'test-service': MagicMock(status='running')
+    }
+    return services
+
+@pytest.fixture
+def test_runner():
+    """From start_test_services.py"""
+    class TestRunner:
+        def start_services(self):
+            ServiceManager().start_all()
+    return TestRunner()
+
+# AI Router Tests (from test_ai_router.py)
+@pytest.mark.asyncio
+async def test_ai_routing(mock_services):
+    router = AIRouter()
+    router.providers = mock_services
+    response = await router.route_request("Test query")
+    assert "response" in response
+
+# Service Tests (from test_service_control.py)
+def test_service_lifecycle(mock_services):
+    manager = ServiceManager()
+    service = manager.add_service({
+        "name": "test-service",
+        "command": "echo 'test'",
+        "type": "custom"
+    })
+    assert manager.start_service(service.id) == "running"
+
+# Integration Tests (from integration_tests.py)
+def test_connectivity(mock_services):
+    assert mock_services['openai'].called is False
+    assert mock_services['deepseek'].called is False
+
+# Project Validation (from post_reset_validation.py)
+def test_project_structure():
+    validator = ProjectValidator([
+        "slick/api/main.py",
+        "slick/core/ai_router.py"
+    ])
+    assert validator.validate(), validator.errors
+
+# Test Runner (from start_test_services.py)
+def test_full_environment(test_runner):
+    test_runner.start_services()
+    assert ServiceManager().get_all_services()

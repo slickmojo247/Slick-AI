@@ -1,0 +1,42 @@
+type,path,description
+directory,ai_core/,Core AI processing modules
+directory,app/,Main application components
+directory,backend/,Backend server components
+directory,cli/,Command line interface
+directory,cognitive/,Cognitive processing modules
+directory,config/,Configuration files
+directory,core/,Core system functionality
+directory,data/,Data storage and processing
+file,deepseek_integration.py,DeepSeek AI integration
+directory,deployment/,Deployment scripts and configs
+directory,docs/,Documentation
+directory,engine/,AI engine components
+file,fix_imports.py,Import fixing utility
+file,index.html,Main web interface
+directory,interface/,User interfaces
+directory,knowledge/,Knowledge base components
+directory,memory/,Memory management
+directory,modules/,Plugin modules
+file,noise_filter.py,Audio processing utility
+file,package.json,NPM package configuration
+file,programming_analyzer.py,Code analysis tool
+file,README.md,Project documentation
+file,requirements.txt,Python dependencies
+file,run_tests.py,Test runner
+directory,scripts/,Utility scripts
+file,setup.py,Installation script
+file,setup_modules.py,Module installation
+file,setup_web_interface.py,Web interface setup
+directory,shared/,Shared resources
+directory,slick/,Main package
+file,SLICK.py,Main application entry point
+file,Slick_chat.py,Chat interface
+file,Slick_dashboard.html,Dashboard interface
+directory,src/,Source files
+file,streamline_ai.py,AI processing pipeline
+directory,system/,System components
+directory,templates/,HTML templates
+directory,tests/,Test files
+directory,utils/,Utility functions
+file,voice_server.py,Voice interface server
+directory,web_interface/,Web interface components

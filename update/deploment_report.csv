@@ -1,0 +1,4 @@
+Directory,File,Action,Color,Status,Instructions,Version,Dependencies
+deployment,Dockerfile,Create,Green (#4ADE80),New,"Container configuration",v1.0,requirements.txt
+deployment,docker-compose.yml,Keep,Green (#4ADE80),Active,"Multi-container orchestration",v1.2,redis
+deployment,requirements.txt,Update,Blue (#60A5FA),Active,"Python dependencies",v1.5,-

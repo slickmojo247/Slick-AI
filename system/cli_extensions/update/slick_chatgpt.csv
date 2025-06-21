@@ -1,0 +1,10 @@
+ModuleID,ModuleName,Description,StartDate,EndDate,Status,ResourceBudget,LinesOfCode,LeadDeveloper,SubModules
+SLK-001,Core,"System initialization and entrypoint logic",2025-06-01,,Active,5000,420,Jordan Case,2
+SLK-002,Config,"User settings and trait config loaders",2025-06-02,,Active,3000,250,Rina Takeda,2
+SLK-003,Data,"Structured files like CSV/JSON for AI memory",2025-06-03,,Active,2000,180,Alex Monroe,3
+SLK-004,Memory,"Context memory and long-term data retention",2025-06-04,,Active,4000,390,Theo Bennett,2
+SLK-005,Personality,"Mood and trait processing for reply tone",2025-06-04,,Active,3500,310,Nia Yamada,2
+SLK-006,Cognitive,"Adaptive learning and response shaping",2025-06-05,,Active,4500,510,Mason Lee,2
+SLK-007,Interface,"Text/voice interface bridge for web/UI",2025-06-06,,Active,3000,275,Karen Silva,2
+SLK-008,Engine,"Core AI reasoning, decisions, logic",2025-06-06,,Active,7000,890,Leo Grant,3
+SLK-009,System,"Bootloader, update, and runtime monitor",2025-06-07,,Active,2800,240,Becca Hart,2

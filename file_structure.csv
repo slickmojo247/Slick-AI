@@ -1,0 +1,45 @@
+Type,Path,Content,Instructions
+File,connectors/ai.py,"import asyncio
+from logic.session_tools.session_logger import SessionLogger
+
+class AIConnector:
+    async def init(self):
+        self.session_logger = SessionLogger()
+        print(""✅ AIConnector ready (hybrid sessions enabled)"")
+
+    async def process(self, query: str):
+        response = f""AI processed: {query}""
+        await self.session_logger.log(query, response)
+        return response","1. Run: cat > connectors/ai.py << 'EOL'
+2. Paste content
+3. Type 'EOL'"
+File,connectors/messaging.py,"from connectors.ai import AIConnector
+import asyncio
+
+async def send_message(query: str):
+    ai = AIConnector()
+    await ai.init()
+    return await ai.process(query)","Same as ai.py"
+File,logic/session_tools/session_logger.py,"import aiofiles
+import csv
+from datetime import datetime
+import os
+
+class SessionLogger:
+    async def log(self, prompt: str, response: str):
+        session_file = ""sessions/session_log.csv""
+        os.makedirs(os.path.dirname(session_file), exist_ok=True)
+        async with aiofiles.open(session_file, mode='a') as f:
+            writer = csv.writer(f)
+            await writer.writerow([datetime.now(), prompt, response])
+        print(f""📝 Logged to {session_file}"")","Ensure aiofiles is installed: pip install aiofiles"
+File,logic/session_tools/csv_reloader.py,"import csv
+from pathlib import Path
+
+def load_session(session_path: str):
+    if not Path(session_path).exists():
+        return []
+    with open(session_path, 'r') as f:
+        return list(csv.reader(f))","No dependencies needed"
+Folder,sessions/,,mkdir -p sessions/
+Folder,logic/session_tools/,,mkdir -p logic/session_tools/

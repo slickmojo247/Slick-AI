@@ -1,0 +1,8 @@
+Directory,File,Action,Color,Status,Instructions,Version
+config,__init__.py,Keep,Green (#4ADE80),Active,"Package initialization","v1.0"
+config,command_registry.csv,Update,Blue (#60A5FA),Active,"Command registry configuration","v1.1"
+config,preferences_loader.py,Update,Blue (#60A5FA),Active,"Load AI preferences from CSV","v1.3"
+config,profile_loader.py,Update,Blue (#60A5FA),Active,"Load AI profile from JSON/CSV","v1.4"
+config,settings.json,Fix,Red (#F87171),Pending,"Fix JSON syntax errors","v0.5"
+config,settings.py,Update,Blue (#60A5FA),Active,"Core configuration settings","v2.2"
+config,slick_env_config.csv,Keep,Green (#4ADE80),Reference,"Environment configuration","v1.0"

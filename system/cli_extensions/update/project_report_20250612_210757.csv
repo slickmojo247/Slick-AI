@@ -1,0 +1,271 @@
+Path,Type,Status,Component,Optimization
+.,Directory,Other Directory,-,Review Structure
+ai_api.py,AI Core Module,Other,Web Server,Consider moving to core/
+Cosmic_back.html,Web Asset,Other,General Functionality,No Change Needed
+cosmic_front.html,Web Asset,Other,CLI,No Change Needed
+deepseek_integration.py,Python Script,Other,Config,No Change Needed
+index.html,Web Asset,Other,General Functionality,No Change Needed
+memupdate.py,Python Script,Other,General Functionality,No Change Needed
+noise_filter.py,Python Script,Other,Data Processing,No Change Needed
+package.json,Data File,Other,General Functionality,No Change Needed
+programming_analyzer.py,Python Script,Other,General Functionality,No Change Needed
+project_structure.csv,Data File,Other,Web Server,No Change Needed
+README.md,Documentation,Other,General Functionality,No Change Needed
+requirements.txt,Documentation,Other,Web Server,No Change Needed
+setup.py,Python Script,Other,General Functionality,No Change Needed
+setup_modules.py,Python Script,Other,General Functionality,No Change Needed
+setup_web_interface.py,Python Script,Other,Web Server,No Change Needed
+SLICK.html,Web Asset,Other,CLI,No Change Needed
+SLICK.py,Python Script,Other,General Functionality,No Change Needed
+Slick_AI_Command_Ineterface.py,AI Core Module,Other,General Functionality,Consider moving to core/
+Slick_chat.py,AI Core Module,Other,General Functionality,No Change Needed
+Slick_dashboard.html,Web Asset,Other,General Functionality,No Change Needed
+slick_env_config.csv,Data File,Other,Web Server,No Change Needed
+tipts.txt,Documentation,Other,General Functionality,No Change Needed
+Update,Other,Other,General Functionality,No Change Needed
+voice_server.py,Python Script,Other,Web Server,No Change Needed
+__init__.py,Python Script,Other,General Functionality,No Change Needed
+__main__,Other,Other,General Functionality,No Change Needed
+ai_connect,Directory,Other Directory,-,Review Structure
+ai_connect/deepseek_bridge.py,Python Script,Other,General Functionality,No Change Needed
+ai_connect/openai_bridge.py,Python Script,Other,General Functionality,Consider moving to core/
+app,Directory,Primary Module,-,Well-Structured
+app/main.py,App Module,Primary,General Functionality,Well-Structured
+app/__init__.py,App Module,Primary,General Functionality,Well-Structured
+app/config,Directory,Primary Module,-,Well-Structured
+app/config/paths.py,Config Module,Primary,General Functionality,Well-Structured
+app/config/settings.py,Config Module,Primary,General Functionality,Well-Structured
+app/config/__init__.py,Config Module,Primary,General Functionality,Well-Structured
+app/logic,Directory,Primary Module,-,Well-Structured
+app/logic/ai_logic.py,AI Core Module,Primary,General Functionality,Well-Structured
+app/logic/commands.py,Python Script,Primary,General Functionality,Well-Structured
+app/logic/user_flow.py,Python Script,Primary,General Functionality,Well-Structured
+app/memory,Directory,Primary Module,-,Well-Structured
+app/memory/memory_engine.py,Memory Module,Primary,Web Server,Well-Structured
+app/system,Directory,Primary Module,-,Well-Structured
+app/systems,Directory,Primary Module,-,Well-Structured
+app/systems/linux_tools.py,Python Script,Primary,General Functionality,Well-Structured
+app/systems/sync_core.py,Python Script,Primary,General Functionality,Well-Structured
+app/systems/windows_tools.py,Python Script,Primary,General Functionality,Well-Structured
+backend,Directory,Primary Module,-,Well-Structured
+backend/ai_integration.py,Backend Module,Primary,General Functionality,Well-Structured
+backend/app.py,Backend Module,Primary,Web Server,Well-Structured
+backend/requirements.txt,Documentation,Primary,Web Server,Well-Structured
+backend/commands,Directory,Primary Module,-,Well-Structured
+backend/commands/help_me.py,Python Script,Primary,Data Processing,Well-Structured
+backend/commands/toggle_commands.py,Python Script,Primary,Web Server,Well-Structured
+backend/commands/__init__.py,Python Script,Primary,General Functionality,Well-Structured
+bin,Directory,Other Directory,-,Review Structure
+bin/slick,Directory,Other Directory,-,Review Structure
+bin/slick/Entry_point.py,Python Script,Other,Config,No Change Needed
+cli,Directory,Primary Module,-,Well-Structured
+cli/deploy_tools.py,Cli Module,Primary,General Functionality,Well-Structured
+cli/glossary_sync.py,Cli Module,Primary,General Functionality,Well-Structured
+cli/help.py,Cli Module,Primary,General Functionality,Well-Structured
+cli/learn_mode.py,Cli Module,Primary,General Functionality,Well-Structured
+cli/order_manager.py,Cli Module,Primary,General Functionality,Well-Structured
+cli/plain_knowledge.py,Cli Module,Primary,General Functionality,Well-Structured
+cli/project_report_20250612_153717.csv,Data File,Primary,General Functionality,Well-Structured
+cli/report_project.py,Cli Module,Primary,Config,Well-Structured
+cli/see_monitor.py,Cli Module,Primary,General Functionality,Well-Structured
+cli/slick_cli.py,Cli Module,Primary,General Functionality,Well-Structured
+cli/step_trainer.py,Cli Module,Primary,Web Server,Well-Structured
+cli/tools.py,Cli Module,Primary,General Functionality,Well-Structured
+cli/__init__,Other,Primary,General Functionality,Well-Structured
+cli/C:,Directory,Primary Module,-,Well-Structured
+cli/C:/Users,Directory,Primary Module,-,Well-Structured
+cli/C:/Users/slick,Directory,Primary Module,-,Well-Structured
+cli/C:/Users/slick/OneDrive,Directory,Primary Module,-,Well-Structured
+cli/C:/Users/slick/OneDrive/Desktop,Directory,Primary Module,-,Well-Structured
+cli/C:/Users/slick/OneDrive/Desktop/slick_ai_system,Directory,Primary Module,-,Well-Structured
+cognitive,Directory,Primary Module,-,Well-Structured
+cognitive/interest_enhancer.py,Cognitive Module,Primary,Config,Well-Structured
+cognitive/learning_adapter.py,Cognitive Module,Primary,Config,Well-Structured
+cognitive/__init__.py,Cognitive Module,Primary,General Functionality,Well-Structured
+config,Directory,Primary Module,-,Well-Structured
+config/commands.csv,Data File,Primary,Web Server,Well-Structured
+config/preferences_loader.py,Config Module,Primary,General Functionality,Well-Structured
+config/profile_loader.py,Config Module,Primary,Config,Well-Structured
+config/slick_env_config.csv,Data File,Primary,Web Server,Well-Structured
+config/__init__.py,Config Module,Primary,Config,Well-Structured
+core,Directory,Primary Module,-,Well-Structured
+core/ai_system.py,Core Module,Primary,Config,Well-Structured
+core/command_system.py,Core Module,Primary,General Functionality,Well-Structured
+core/system_initializer.py,Core Module,Primary,Config,Well-Structured
+core/__init__.py,Core Module,Primary,General Functionality,Well-Structured
+core/logic_engine,Directory,Primary Module,-,Well-Structured
+data,Directory,Primary Module,-,Well-Structured
+data/ai_preferences_details.csv,Data File,Primary,General Functionality,Well-Structured
+data/chatgpt.csv,Data File,Primary,Web Server,Well-Structured
+data/memory_log.json,Data File,Primary,General Functionality,Well-Structured
+data/memory_nodes.csv,Data File,Primary,General Functionality,Well-Structured
+data/profile_details.csv,Data File,Primary,Config,Well-Structured
+data/slick_chatgpt.csv,Data File,Primary,Config,Well-Structured
+data/slick_upgrade.csv,Data File,Primary,Config,Well-Structured
+data/snapshot_config.json,Data File,Primary,Config,Well-Structured
+docs,Directory,Primary Module,-,Well-Structured
+docs/README_SLICK_AI.md,Documentation,Primary,General Functionality,Well-Structured
+engine,Directory,Primary Module,-,Well-Structured
+engine/logic_core.py,Engine Module,Primary,Config,Well-Structured
+engine/preference_applier.py,Engine Module,Primary,Config,Well-Structured
+engine/__init__.py,Engine Module,Primary,General Functionality,Well-Structured
+interface,Directory,Primary Module,-,Well-Structured
+interface/voice_integration.py,Interface Module,Primary,Config,Well-Structured
+interface/__init__.py,Interface Module,Primary,General Functionality,Well-Structured
+interface/api,Directory,Primary Module,-,Well-Structured
+interface/api/routes.py,Python Script,Primary,General Functionality,Well-Structured
+interface/web_interface,Directory,Primary Module,-,Well-Structured
+interface/web_interface/static,Directory,Primary Module,-,Well-Structured
+interface/web_interface/templates,Directory,Primary Module,-,Well-Structured
+logs,Directory,Other Directory,-,Review Structure
+logs/linux.log,Other,Other,General Functionality,No Change Needed
+logs/windows.log,Other,Other,General Functionality,No Change Needed
+logs/retrieved,Directory,Other Directory,-,Review Structure
+memory,Directory,Primary Module,-,Well-Structured
+memory/memory_core.py,Memory Module,Primary,Config,Well-Structured
+memory/memory_integration.py,Memory Module,Primary,Config,Well-Structured
+memory/memory_node.py,Memory Module,Primary,General Functionality,Well-Structured
+memory/__init__.py,Memory Module,Primary,General Functionality,Well-Structured
+memory/backups,Directory,Primary Module,-,Well-Structured
+memory/lost,Directory,Primary Module,-,Well-Structured
+mic_input,Directory,Other Directory,-,Review Structure
+mic_input/wo_mic_listener.py,Python Script,Other,General Functionality,No Change Needed
+modules,Directory,Primary Module,-,Well-Structured
+modules/emotion_processor.py,Modules Module,Primary,General Functionality,Well-Structured
+modules/knowledge_graph.py,Modules Module,Primary,General Functionality,Well-Structured
+modules/sentiment_analysis.py,Modules Module,Primary,General Functionality,Well-Structured
+modules/voice_interface.py,Modules Module,Primary,General Functionality,Well-Structured
+personality,Directory,Other Directory,-,Review Structure
+personality/trait_engine.py,Python Script,Other,Config,No Change Needed
+personality/__init__.py,Python Script,Other,General Functionality,No Change Needed
+personality/character_interactions,Directory,Other Directory,-,Review Structure
+projects,Directory,Other Directory,-,Review Structure
+projects/projects_savepoint.csv,Data File,Other,General Functionality,No Change Needed
+projects/project_manifest.csv,Data File,Other,Config,No Change Needed
+projects/slick_ai_extraction.csv,Data File,Other,General Functionality,Consider moving to core/
+projects/slick_ai_full_separation.csv,Data File,Other,Web Server,Consider moving to core/
+projects/slick_ai_project.csv,Data File,Other,General Functionality,Consider moving to core/
+projects/slick_ai_separation_plan.csv,Data File,Other,Web Server,Consider moving to core/
+public,Directory,Other Directory,-,Review Structure
+public/index.html,Web Asset,Other,General Functionality,No Change Needed
+scripts,Directory,Primary Module,-,Well-Structured
+scripts/Backup.py,Scripts Module,Primary,General Functionality,Well-Structured
+scripts/build_project.py,Scripts Module,Primary,General Functionality,Well-Structured
+scripts/convert_manifest.py,Scripts Module,Primary,General Functionality,Well-Structured
+scripts/extract_slick_ai_components.py,Scripts Module,Primary,Config,Well-Structured
+scripts/prepare_slick_ai_system.py,Scripts Module,Primary,Web Server,Well-Structured
+scripts/rebuild.py,Scripts Module,Primary,General Functionality,Well-Structured
+scripts/reorganize_project.py,Scripts Module,Primary,Config,Well-Structured
+scripts/restore_files.py,Scripts Module,Primary,General Functionality,Well-Structured
+slick,Directory,Other Directory,-,Review Structure
+slick/core,Directory,Primary Module,-,Well-Structured
+slick/core/action_base.py,Core Module,Primary,General Functionality,Well-Structured
+slick/core/action_registry.py,Core Module,Primary,General Functionality,Well-Structured
+slick/core/AI_Module.py,Core Module,Primary,General Functionality,Well-Structured
+slick/core/context_ai.py,Core Module,Primary,General Functionality,Well-Structured
+slick/core/action_plugins,Directory,Primary Module,-,Well-Structured
+slick/core/action_plugins/action_game.py,Python Script,Primary,General Functionality,Well-Structured
+slick/core/action_plugins/action_light.py,Python Script,Primary,General Functionality,Well-Structured
+slick/core/action_plugins/action_schedule.py,Python Script,Primary,General Functionality,Well-Structured
+slick/core/action_plugins/__init__,Other,Primary,General Functionality,Well-Structured
+slick/engine,Directory,Primary Module,-,Well-Structured
+slick/engine/logic_core.py,Engine Module,Primary,General Functionality,Well-Structured
+slick/SLICK_AI,Directory,Other Directory,-,Review Structure
+slick/SLICK_AI/adaptive_learning.py,Python Script,Other,General Functionality,No Change Needed
+slick/SLICK_AI/app.py,Python Script,Other,Web Server,No Change Needed
+slick/SLICK_AI/Audio_socket.py,Python Script,Other,Config,No Change Needed
+slick/SLICK_AI/command_service.py,Python Script,Other,Config,No Change Needed
+slick/SLICK_AI/ContextAwareness,Other,Other,General Functionality,No Change Needed
+slick/SLICK_AI/Cosmic_back.html,Web Asset,Other,General Functionality,No Change Needed
+slick/SLICK_AI/Cosmic_back.py,Python Script,Other,General Functionality,No Change Needed
+slick/SLICK_AI/cosmic_front.html,Web Asset,Other,CLI,No Change Needed
+slick/SLICK_AI/Cosmic_front.py,Python Script,Other,Web Server,No Change Needed
+"slick/SLICK_AI/GG_WEB,html.txt",Documentation,Other,General Functionality,No Change Needed
+slick/SLICK_AI/hybrid.py,Python Script,Other,General Functionality,No Change Needed
+slick/SLICK_AI/logic.py,Python Script,Other,Data Processing,No Change Needed
+slick/SLICK_AI/myHTML,Other,Other,Web Server,No Change Needed
+slick/SLICK_AI/myHTML.py,Python Script,Other,Data Processing,No Change Needed
+slick/SLICK_AI/openai.py,Python Script,Other,General Functionality,No Change Needed
+slick/SLICK_AI/READ.ME.md,Documentation,Other,Web Server,No Change Needed
+slick/SLICK_AI/requirements.txt,Documentation,Other,Web Server,No Change Needed
+slick/SLICK_AI/Slick_chat.py,AI Core Module,Other,General Functionality,No Change Needed
+slick/SLICK_AI/Slick_dashboard.html,Web Asset,Other,General Functionality,No Change Needed
+slick/SLICK_AI/speech_recognition.py,Python Script,Other,General Functionality,No Change Needed
+slick/SLICK_AI/voice_assistant.py,Python Script,Other,General Functionality,No Change Needed
+slick/SLICK_AI/voice_input.py,Python Script,Other,General Functionality,No Change Needed
+slick/SLICK_AI/__main__,Other,Other,General Functionality,No Change Needed
+slick/SLICK_AI/frontend,Directory,Other Directory,-,Review Structure
+slick/SLICK_AI/frontend/index.html,Web Asset,Other,General Functionality,No Change Needed
+slick/SLICK_AI/frontend/script.js,Web Asset,Other,CLI,No Change Needed
+slick/SLICK_AI/frontend/style.css,Web Asset,Other,General Functionality,No Change Needed
+slick/SLICK_AI/game_ai,Directory,Other Directory,-,Review Structure
+slick/SLICK_AI/game_ai/AI_BEHAVIOR.py,AI Core Module,Other,General Functionality,Consider moving to core/
+slick/SLICK_AI/game_ai/AI_BEHAVIOR_EXT.py,AI Core Module,Other,General Functionality,Consider moving to core/
+slick/SLICK_AI/game_ai/AI_DIALOGUE_EXT.py,AI Core Module,Other,General Functionality,Consider moving to core/
+slick/SLICK_AI/game_ai/AI_EMOTION.py,AI Core Module,Other,General Functionality,Consider moving to core/
+slick/SLICK_AI/game_ai/AI_EVENTBUS.py,AI Core Module,Other,General Functionality,Consider moving to core/
+slick/SLICK_AI/game_ai/AI_INTEGRATION.py,AI Core Module,Other,General Functionality,Consider moving to core/
+slick/SLICK_AI/game_ai/AI_MEMORY.PY,AI Core Module,Other,General Functionality,Consider moving to memory/
+slick/SLICK_AI/game_ai/AI_MODEL.py,AI Core Module,Other,General Functionality,Consider moving to core/
+slick/SLICK_AI/game_ai/AI_TASKSCHEDULER.py,AI Core Module,Other,General Functionality,Consider moving to core/
+slick/SLICK_AI/game_ai/CognitiveCore.py,Python Script,Other,Data Processing,No Change Needed
+slick/SLICK_AI/game_ai/cognitive_logic_unit.py,AI Core Module,Other,Data Processing,No Change Needed
+slick/SLICK_AI/game_ai/game.py,Python Script,Other,CLI,No Change Needed
+slick/SLICK_AI/plugins,Directory,Other Directory,-,Review Structure
+slick/SLICK_AI/plugins/actions,Directory,Other Directory,-,Review Structure
+slick/SLICK_AI/plugins/actions/action_app.py,Python Script,Other,General Functionality,No Change Needed
+slick/SLICK_AI/plugins/actions/action_lights.py,Python Script,Other,General Functionality,No Change Needed
+slick/SLICK_AI/plugins/actions/action_meeting.py,Python Script,Other,General Functionality,No Change Needed
+slick/SLICK_AI/plugins/actions/action_preference.py,Python Script,Other,General Functionality,No Change Needed
+slick/SLICK_AI/plugins/actions/action_spawn.py,Python Script,Other,General Functionality,No Change Needed
+slick/SLICK_AI/plugins/actions/action_web.py,Python Script,Other,General Functionality,No Change Needed
+slick/SLICK_AI/templates,Directory,Primary Module,-,Well-Structured
+slick/SLICK_AI/templates/ai_intergration,Other,Primary,General Functionality,Well-Structured
+slick/SLICK_AI/templates/dashboard.html,Web Asset,Primary,General Functionality,Well-Structured
+slick/system,Directory,Primary Module,-,Well-Structured
+slick/system/boot_loader.py,System Module,Primary,General Functionality,Well-Structured
+slick/system/core.py,System Module,Primary,General Functionality,Well-Structured
+src,Directory,Other Directory,-,Review Structure
+src/App.js,Web Asset,Other,CLI,No Change Needed
+src/index.js,Web Asset,Other,General Functionality,No Change Needed
+src/cli,Directory,Primary Module,-,Well-Structured
+src/cli/M.py,Cli Module,Primary,CLI,Well-Structured
+src/cli/S.py,Cli Module,Primary,CLI,Well-Structured
+src/cli/U.py,Cli Module,Primary,CLI,Well-Structured
+src/cli/__main__.py,Cli Module,Primary,General Functionality,Well-Structured
+src/core,Directory,Primary Module,-,Well-Structured
+src/modules,Directory,Primary Module,-,Well-Structured
+src/modules/AutoMemory_Routes.py,Modules Module,Primary,Web Server,Well-Structured
+src/modules/Auto_Master_Loader.py,Modules Module,Primary,General Functionality,Well-Structured
+src/modules/Master_Loader.py,Modules Module,Primary,General Functionality,Well-Structured
+src/web,Directory,Other Directory,-,Review Structure
+src/web/app.py,Python Script,Other,Web Server,No Change Needed
+src/web/static,Directory,Other Directory,-,Review Structure
+src/web/templates,Directory,Primary Module,-,Well-Structured
+system,Directory,Primary Module,-,Well-Structured
+system/boot_loader.py,System Module,Primary,General Functionality,Well-Structured
+system/maintenance_scheduler.py,System Module,Primary,General Functionality,Well-Structured
+system/__init__.py,System Module,Primary,General Functionality,Well-Structured
+system/logs,Directory,Primary Module,-,Well-Structured
+system/logs/backup.log,Other,Primary,Config,Well-Structured
+system/voice_logs,Directory,Primary Module,-,Well-Structured
+telegram_bot,Directory,Other Directory,-,Review Structure
+telegram_bot/bot.py,Python Script,Other,General Functionality,No Change Needed
+templates,Directory,Primary Module,-,Well-Structured
+templates/SLICK.html,Web Asset,Primary,CLI,Well-Structured
+tests,Directory,Primary Module,-,Well-Structured
+tests/test_memory.py,Tests Module,Primary,General Functionality,Well-Structured
+tests/test_routes.py,Tests Module,Primary,General Functionality,Well-Structured
+tests/test_tools.py,Tests Module,Primary,General Functionality,Well-Structured
+web_interface,Directory,Primary Module,-,Well-Structured
+web_interface/app.py,Web_interface Module,Primary,Web Server,Well-Structured
+web_interface/voice_interface.py,Web_interface Module,Primary,General Functionality,Well-Structured
+web_interface/__init__.py,Web_interface Module,Primary,General Functionality,Well-Structured
+web_interface/static,Directory,Primary Module,-,Well-Structured
+web_interface/static/script.js,Web Asset,Primary,CLI,Well-Structured
+web_interface/static/style.css,Web Asset,Primary,General Functionality,Well-Structured
+web_interface/static/js,Directory,Primary Module,-,Well-Structured
+web_interface/static/js/programmer.js,Web Asset,Primary,CLI,Well-Structured
+web_interface/templates,Directory,Primary Module,-,Well-Structured
+web_interface/templates/index.html,Web Asset,Primary,General Functionality,Well-Structured
+web_interface/templates/programmer_interface.html,Web Asset,Primary,General Functionality,Well-Structured

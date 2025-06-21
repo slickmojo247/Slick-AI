@@ -1,0 +1,14 @@
+<!-- slick/templates/dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SLICK AI Dashboard</title>
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Dashboard content from Slick_dashboard.html -->
+    </div>
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

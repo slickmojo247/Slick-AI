@@ -1,0 +1,7 @@
+Component,Type,Status,Version,Priority,Dependencies,Features,Framework
+api.py,Backend,Complete,v1.2,High,"FastAPI, CommandManager, AIConnector",Command/AI endpoints,FastAPI Router
+cosmic.css,Stylesheet,Complete,v1.3,Medium,"CSS3",Cosmic theme variables,Vanilla CSS
+command_ui.js,Frontend,Complete,v1.1,High,"DOM API",Command toggle UI,Vanilla JavaScript
+CommandPanel.js,Component,Complete,v1.2,High,"Vue 3",Searchable command list,Vue SFC
+vue_app.js,Frontend,Complete,v1.0,High,"Vue 3",App initialization,Vue 3
+index.html,Template,Complete,v1.1,High,"HTML5",Root template,HTML5

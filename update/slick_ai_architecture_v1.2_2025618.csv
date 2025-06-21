@@ -1,0 +1,18 @@
+Type,Component,Connection,Connected To,Connection Type,Port,Data Flow,Config Setting,Example Value,Purpose
+Core,System,VSCode,<->,SLICK AI,WebSocket,,Code <-> AI Feedback,,
+Core,System,Web Interface,<->,SLICK AI,HTTP/REST,,UI Events <-> AI Responses,,
+Core,System,SLICK AI,->,API Orchestrator,Internal,,Query Analysis,,
+AI Service,API Orchestrator,->,OpenAI,API,,Initial Response Generation,blend_mode,balanced,"balanced/creative/technical"
+AI Service,API Orchestrator,->,DeepSeek,API,,Complementary Enhancement,weight_openai,0.7,Primary response weight
+Integration,OpenAI,-->,Response Blender,Internal,,Text + Context,weight_deepseek,0.3,Complementary weight
+Integration,DeepSeek,-->,Response Blender,Internal,,Validation + Expansion,complement_type,validate,"validate/expand/counter"
+Core,System,Response Blender,->,SLICK AI,Internal,,Blended Response,fallback_source,deepseek,When OpenAI fails
+Hardware,WO Mic (Phone),->,Windows Computer,TCP/IP,8125,Voice -> Port 8125,audio_sample_rate,16000,Audio quality
+Integration,Windows Computer,->,SLICK AI,Internal Pipe,,Text Transcriptions,stt_engine,pyAudioAnalysis,Speech-to-text
+User,User,->,All Interfaces,Input,,Voice/Text/CLI,default_input,voice,Preferred input method
+Legacy,Telegram Bot,<->,SLICK AI,API,,Fallback channel,use_telegram,true,When primary APIs fail
+AI Service,Telegram Bot,->,OpenAI,API,,Secondary access,telegram_key,sk-...xxx,Encrypted
+AI Service,Telegram Bot,->,DeepSeek,API,,Alternative path,deepseek_key,ds-...xxx,Encrypted
+Logic,Response Blender,Mode,Creative,,,Idea generation,creativity,0.8,0-1 scale
+Logic,Response Blender,Mode,Technical,,,Code assistance,precision,0.9,0-1 scale
+Logic,Response Blender,Mode,Validation,,,Fact checking,strictness,0.7,0-1 scale

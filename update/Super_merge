@@ -1,0 +1,72 @@
+<!-- FRONTEND COMPONENT (simplified Vue.js dashboard) -->
+<template>
+  <div class="cosmic-dashboard">
+    <header class="cosmic-header">
+      <h1>SLICK AI Control Center</h1>
+    </header>
+
+    <div class="cosmic-grid">
+      <!-- Command Panel -->
+      <section class="command-panel">
+        <input v-model="commandSearch" placeholder="Search commands...">
+        <div v-for="cmd in filteredCommands" :key="cmd.name" class="command-card">
+          <h3>{{ cmd.name }}</h3>
+          <p>{{ cmd.description }}</p>
+        </div>
+      </section>
+
+      <!-- AI Console -->
+      <section class="ai-console">
+        <textarea v-model="aiPrompt" placeholder="Ask AI anything..."></textarea>
+        <button @click="sendToAI">Submit</button>
+        <div class="ai-response" v-html="aiResponse"></div>
+      </section>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      commandSearch: '',
+      commands: [
+        { name: 'CURE', description: 'System healing command' },
+        { name: 'LOOK', description: 'Code analysis command' }
+      ],
+      aiPrompt: '',
+      aiResponse: ''
+    }
+  },
+  computed: {
+    filteredCommands() {
+      return this.commands.filter(cmd => 
+        cmd.name.toLowerCase().includes(this.commandSearch.toLowerCase())
+      )
+    }
+  },
+  methods: {
+    async sendToAI() {
+      const response = await fetch('/query', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: this.aiPrompt })
+      })
+      this.aiResponse = await response.text()
+    }
+  }
+}
+</script>
+
+<style>
+.cosmic-dashboard {
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.command-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+</style>

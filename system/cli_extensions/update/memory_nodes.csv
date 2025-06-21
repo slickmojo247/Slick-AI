@@ -1,0 +1,3 @@
+event_id,timestamp,sensory_context,emotional_weight,embeddings_type
+evt001,2023-10-26T10:00:00Z,"{type: audio, source: microphone}",0.7,str
+evt002,2023-10-26T11:00:00Z,"{type: visual, source: camera}",0.9,list

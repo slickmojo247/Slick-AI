@@ -1,0 +1,14 @@
+{
+    "poetic": {
+        "adjectives": ["lyrical", "flowing", "rhythmic", "metaphorical"],
+        "structures": ["sonnet", "haiku", "free verse", "limerick"]
+    },
+    "fantasy": {
+        "elements": ["dragons", "magic", "quests", "ancient prophecies"],
+        "settings": ["medieval kingdoms", "enchanted forests", "floating cities"]
+    },
+    "sci-fi": {
+        "tech": ["AI", "spaceships", "time travel", "cybernetics"],
+        "settings": ["space stations", "dystopian futures", "alien planets"]
+    }
+}

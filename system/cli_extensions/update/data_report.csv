@@ -1,0 +1,9 @@
+Directory,File,Action,Color,Status,Instructions,Version,Size,LastModified,Dependencies
+data,ai_preferences_details.csv,Keep,Green (#4ADE80),Active,"AI preference settings",v1.0,1KB,2025-06-17,profile_loader.py
+data,chatgpt.csv,Review,Pink (#F472B6),Pending,"Clean duplicate entries",v0.8,5KB,2025-06-15,-
+data,memory_log.json,Update,Blue (#60A5FA),Active,"Memory log storage",v1.2,0KB,2025-06-17,memory_core.py
+data,memory_nodes.csv,Update,Blue (#60A5FA),Active,"Memory node records",v1.3,2KB,2025-06-16,memory_integration.py
+data,profile_details.csv,Keep,Green (#4ADE80),Active,"Core AI profile data",v1.0,1KB,2025-06-17,profile_loader.py
+data,slick_chatgpt.csv,Review,Pink (#F472B6),Pending,"Verify module completeness",v0.9,3KB,2025-06-14,-
+data,slick_upgrade.csv,Update,Blue (#60A5FA),Active,"System upgrade records",v1.5,15KB,2025-06-17,boot_loader.py
+data,snapshot_config.json,Keep,Green (#4ADE80),Active,"Full system snapshot",v1.0,3KB,2025-06-17,preferences_loader.py

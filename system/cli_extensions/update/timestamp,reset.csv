@@ -1,0 +1,15 @@
+timestamp,reset_type,memory_entries,chat_turns,knowledge_nodes,system_version
+2025-06-18T10:00:00,soft,142,15,4587,v2.1.0
+2025-06-18T14:30:00,hard,0,0,4587,v2.1.0
+2025-06-18T15:45:00,modal,87,3,4587,v2.1.1
+timestamp,reset_type,memory_entries,chat_turns,knowledge_nodes,system_version,memory_change,days_since_reset
+2025-06-18T10:00:00,soft,142,15,4587,v2.1.0,,,
+2025-06-18T14:30:00,hard,0,0,4587,v2.1.0,-142,0.1875
+2025-06-18T15:45:00,modal,87,3,4587,v2.1.1,+87,0.05216. Key Metrics Tracked
+Metric	Description	Data Type
+memory_entries	Count of remaining memories	Integer
+memory_change	Delta from previous reset	Integer
+chat_turns	Conversation turns since reset	Integer
+knowledge_nodes	KG nodes (unaffected by reset)	Integer
+days_since_reset	Time between resets	Float
+7. Integration Points

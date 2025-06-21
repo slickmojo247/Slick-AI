@@ -1,0 +1,11 @@
+Module,Directory,File,Status,Version,Priority,LastUpdated,Owner,Notes
+Core,src/core/,M.py,Active,v1.2,High,2025-06-17,AI Team,"Memory management CLI"
+Core,src/core/,S.py,Active,v1.3,High,2025-06-17,Systems Team,"System diagnostics CLI"
+Core,src/core/,U.py,Active,v1.1,High,2025-06-17,DevOps,"Update management CLI"
+Web,src/web/,App.js,Active,v1.4,High,2025-06-17,Web Team,"React code generator UI"
+Web,src/web/,index.js,Active,v1.0,High,2025-06-17,Web Team,"React entry point"
+Extensions,src/extensions/,extensions.ts,Active,v1.3,High,2025-06-17,VSCode Team,"VSCode extension for Slick"
+API,src/api/,AutoMemory_Routes.py,Active,v1.2,High,2025-06-17,API Team,"Memory management API"
+Utilities,src/utils/,Auto_Master_Loader.py,Active,v1.1,Medium,2025-06-17,Systems Team,"Automatic zip file loader"
+Utilities,src/utils/,Master_Loader.py,Active,v1.0,Medium,2025-06-17,Systems Team,"Manual zip file loader"
+Main,src/,__main__.py,Active,v1.0,High,2025-06-17,Core Team,"Main application entry point"

@@ -1,0 +1,4 @@
+Module,Directory,File,Status,Version,Priority,LastUpdated,Owner,Notes
+Security,security/,learning.py,Active,v1.1,High,2025-06-17,Security Team,"Threat pattern detection engine"
+Security,security/,rules.py,Active,v1.2,High,2025-06-17,Security Team,"Behavior profiling system"
+Security,security/,system.py,Active,v1.3,Critical,2025-06-17,Security Team,"Core security monitoring system"

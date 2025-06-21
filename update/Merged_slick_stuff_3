@@ -1,0 +1,239 @@
+# slick/core/system.py
+import asyncio
+import signal
+import logging
+from dotenv import load_dotenv
+from pathlib import Path
+from typing import Optional, Dict, List
+from dataclasses import dataclass
+
+# Configure logging
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
+logger = logging.getLogger('SLICK')
+
+@dataclass
+class AIConfig:
+    """Configuration for AI personality and behavior"""
+    name: str = "Slick"
+    moods: List[str] = None
+    current_mood: str = None
+    favorite_topics: List[str] = None
+    voice_enabled: bool = True
+    
+    def __post_init__(self):
+        self.moods = self.moods or ["happy", "curious", "playful", "thoughtful", "excited", "chill"]
+        self.current_mood = self.current_mood or random.choice(self.moods)
+        self.favorite_topics = self.favorite_topics or [
+            "technology", "music", "games", "movies", "science", "programming"
+        ]
+
+class SlickController:
+    """Main controller for the SLICK AI system"""
+    
+    def __init__(self, config: Optional[AIConfig] = None):
+        self.config = config or AIConfig()
+        self.running = False
+        self._shutdown_signal = False
+        
+    async def start(self):
+        """Start the AI system"""
+        if self.running:
+            logger.warning("Controller already running")
+            return
+            
+        self.running = True
+        logger.info("🚀 Starting SLICK AI System")
+        
+        # Initialize components
+        await self._initialize_components()
+        
+        # Main event loop
+        while self.running and not self._shutdown_signal:
+            try:
+                await self._process_cycle()
+                await asyncio.sleep(0.1)
+            except Exception as e:
+                logger.error(f"Error in main loop: {e}", exc_info=True)
+                
+        await self.stop()
+        
+    async def stop(self):
+        """Gracefully stop the AI system"""
+        if not self.running:
+            return
+            
+        logger.info("🛑 Stopping SLICK AI System")
+        self.running = False
+        
+        # Clean up resources
+        await self._cleanup_components()
+        
+    async def _initialize_components(self):
+        """Initialize all system components"""
+        # Placeholder for actual component initialization
+        logger.info("Initializing system components...")
+        
+    async def _process_cycle(self):
+        """Single processing cycle"""
+        # Placeholder for actual processing logic
+        pass
+        
+    async def _cleanup_components(self):
+        """Clean up all system resources"""
+        logger.info("Cleaning up system resources...")
+
+class SlickAI:
+    """Core AI personality and interaction logic"""
+    
+    def __init__(self, config: Optional[AIConfig] = None):
+        self.config = config or AIConfig()
+        self.user_name = "Friend"
+        self.memory_file = "slick_memory.json"
+        self.memory = self._load_memory()
+        
+        # Initialize voice components if enabled
+        if self.config.voice_enabled:
+            self._init_voice_components()
+            
+        # Personality elements
+        self.jokes = [
+            "Why don't scientists trust atoms? Because they make up everything!",
+            "What did the pirate say when he turned 80? Aye matey!",
+            "Why did the scarecrow win an award? Because he was outstanding in his field!"
+        ]
+        
+        self.quotes = [
+            "The only way to do great work is to love what you do. - Steve Jobs",
+            "Innovation distinguishes between a leader and a follower. - Steve Jobs"
+        ]
+        
+    def _init_voice_components(self):
+        """Initialize voice recognition and synthesis"""
+        try:
+            import speech_recognition as sr
+            import pyttsx3
+            
+            self.recognizer = sr.Recognizer()
+            self.engine = pyttsx3.init()
+            self._set_voice_properties()
+        except ImportError:
+            logger.warning("Voice components not available - running in text-only mode")
+            self.config.voice_enabled = False
+            
+    def _set_voice_properties(self):
+        """Configure voice properties"""
+        voices = self.engine.getProperty('voices')
+        for voice in voices:
+            if "female" in voice.name.lower():
+                self.engine.setProperty('voice', voice.id)
+                break
+        self.engine.setProperty('rate', 150)
+        self.engine.setProperty('volume', 0.9)
+        
+    def _load_memory(self) -> Dict:
+        """Load persistent memory from file"""
+        try:
+            if Path(self.memory_file).exists():
+                with open(self.memory_file, 'r') as f:
+                    memory = json.load(f)
+                    self.user_name = memory.get("user_name", "Friend")
+                    return memory
+        except Exception as e:
+            logger.error(f"Error loading memory: {e}")
+        return {"favorites": {}, "reminders": []}
+        
+    def save_memory(self):
+        """Save current state to memory file"""
+        try:
+            with open(self.memory_file, 'w') as f:
+                json.dump({
+                    "user_name": self.user_name,
+                    "favorites": self.memory.get("favorites", {}),
+                    "reminders": self.memory.get("reminders", [])
+                }, f)
+        except Exception as e:
+            logger.error(f"Error saving memory: {e}")
+            
+    # ... (other methods from Slick_chat.py would be integrated here)
+    
+    async def process_input(self, input_text: str) -> str:
+        """Process user input and generate response"""
+        # Update mood occasionally
+        if random.random() < 0.15:
+            self._change_mood()
+            
+        # Process input and generate response
+        response = self._generate_response(input_text)
+        
+        # Speak response if voice enabled
+        if self.config.voice_enabled:
+            self._speak(response)
+            
+        return response
+        
+    def _generate_response(self, input_text: str) -> str:
+        """Core response generation logic"""
+        input_lower = input_text.lower()
+        
+        # Handle greetings
+        if any(word in input_lower for word in ["hi", "hello", "hey"]):
+            return self._generate_greeting()
+            
+        # Handle specific commands
+        if "your name" in input_lower:
+            return f"They call me {self.config.name}!"
+            
+        # ... (other response handling logic)
+        
+        # Default mood-based response
+        return self._default_response()
+        
+    # ... (other helper methods)
+
+async def main():
+    """Entry point for the SLICK AI system"""
+    # Load environment variables
+    load_dotenv()
+    
+    # Configure signal handlers
+    def handle_shutdown(signum, frame):
+        logger.info("Shutdown signal received")
+        if 'controller' in globals():
+            asyncio.create_task(controller.stop())
+            
+    signal.signal(signal.SIGINT, handle_shutdown)
+    signal.signal(signal.SIGTERM, handle_shutdown)
+    
+    # Initialize and start controller
+    controller = SlickController()
+    await controller.start()
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
+    # slick/web/dashboard.py
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse
+from pathlib import Path
+import uvicorn
+
+app = FastAPI()
+
+# Mount static files
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+@app.get("/", response_class=HTMLResponse)
+async def get_dashboard():
+    """Serve the AI dashboard"""
+    return Path("templates/dashboard.html").read_text()
+
+def run_web_server(host: str = "0.0.0.0", port: int = 8000):
+    """Run the web interface"""
+    uvicorn.run(app, host=host, port=port)
+
+if __name__ == "__main__":
+    run_web_server()

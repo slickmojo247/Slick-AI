@@ -1,0 +1,11 @@
+Path,Type,Status,Version,Priority,Dependencies,Owner,LastUpdated,Notes
+web_server.py,Backend,Complete,v1.0,High,"FastAPI, uvicorn",Core Team,2025-06-18,Main web server implementation
+control_dashboard.html,Frontend,Complete,v1.2,High,"Chart.js",Web Team,2025-06-18,System control dashboard
+index.html,Frontend,Complete,v1.1,Medium,,Web Team,2025-06-18,Main chat interface
+programmer_interface.html,Frontend,Complete,v1.2,High,"CodeMirror",Web Team,2025-06-18,Programming assistant interface
+__init__.py,Module,Complete,v1.0,Low,,Core Team,2025-06-18,Package initialization
+dashboard_console.py,Backend,Complete,v1.1,High,"Flask",Core Team,2025-06-18,Legacy dashboard console
+path_mapping.json,Config,Complete,v1.0,Medium,,System Team,2025-06-18,Path mapping configuration
+proxy_router.py,Backend,Complete,v1.0,Medium,"FastAPI",Core Team,2025-06-18,Proxy configuration router
+security_middleware.py,Utility,Complete,v1.0,High,,Security Team,2025-06-18,Permission validation
+sync_service.py,Service,Complete,v1.0,High,"watchdog",System Team,2025-06-18,File synchronization service

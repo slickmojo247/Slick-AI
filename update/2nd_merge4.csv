@@ -1,0 +1,151 @@
+Module,Path,Status,Version,Priority,Dependencies,Features,Notes
+boot_loader,system/boot_loader.py,Complete,v1.0,Critical,SystemInitializer,SlickLogicEngine,System startup sequence
+maintenance_scheduler,system/maintenance_scheduler.py,Complete,v1.0,Medium,threading,Memory decay scheduler
+conflict_resolver,system/sync/conflict_resolver.py,Complete,v1.0,High,difflib,File conflict resolution
+sync_manager,system/sync_manager.py,Complete,v1.0,High,watchdog,requests,File synchronization handler
+version_manager,system/version_manager.py,Complete,v1.0,High,json,pathlib,File version control
+__init__,system/__init__.py,Complete,v1.0,Low,,Package marker
+ai_core/ai_preferences_details.csv,ai_core/ai_preferences_details.csv,Complete,v1.0,Medium,None,AI preferences data,Stores preferences for AI operations
+ai_core/memupdate.py,ai_core/memupdate.py,Complete,v1.0,High,pickle,zlib,Memory update functionality,Handles memory snapshotting
+ai_core/ai_route.py,ai_core/ai_route.py,Complete,v1.0,High,FastAPI,AI route handling,Routes AI requests to the respective providers
+ai_core/data_handler.py,ai_core/data_handler.py,Complete,v1.0,High,json,csv,Data reading and writing,Handles CSV and JSON data files
+ai_core/error_logger.py,ai_core/error_logger.py,Complete,v1.0,High,logging,Error logging,Logs errors related to AI processing
+app/app.py,app/app.py,Complete,v1.0,High,FastAPI,API initialization,Core FastAPI application
+app/main.py,app/main.py,Complete,v1.0,High,FastAPI,API endpoints,Main application routing
+app/ai.py,app/ai.py,Complete,v1.0,High,AI,AI controller and handlers,Contains all AI-related operations
+app/security.py,app/security.py,Complete,v1.0,Critical,FastAPI,Security handling,Contains authentication and authorization logic
+backend/web_server.py,backend/web_server.py,Complete,v1.0,High,FastAPI,uvicorn,Main web server implementation
+backend/proxy_router.py,backend/proxy_router.py,Complete,v1.0,Medium,FastAPI,Proxy routing,Handles routing logic between services
+backend/ai_route.py,backend/ai_route.py,Complete,v1.0,High,FastAPI,CommandManager, AIConnector,AI request handling
+backend/api.py,backend/api.py,Complete,v1.2,High,FastAPI,CommandManager, AIConnector,Command/AI endpoints
+backend/security_middleware.py,backend/security_middleware.py,Complete,v1.0,High,,Security and permission validation
+frontend/chat_interface.html,frontend/chat_interface.html,Complete,v1.0,High,Bootstrap,Chart.js,Real-time messaging,Dark theme with responsive design
+frontend/command_interface.html,frontend/command_interface.html,Complete,v1.0,High,Bootstrap,CLI emulator,Integrated with backend API
+frontend/user_input.html,frontend/user_input.html,Complete,v1.0,High,None,Text input with send button,Handles both chat and commands
+frontend/message_display.html,frontend/message_display.html,Complete,v1.0,High,None,User/AI message bubbles,Auto-scrolling chat history
+frontend/command_history.html,frontend/command_history.html,Complete,v1.0,Medium,None,Shows last 5 commands,Persisted via API
+frontend/command_suggestions.html,frontend/command_suggestions.html,Complete,v1.0,Medium,None,Quick-access buttons,Common CLI commands
+frontend/output_display.html,frontend/output_display.html,Complete,v1.0,High,None,Pre-formatted text,Shows command execution results
+tests/check_project_structure.py,tests/check_project_structure.py,Complete,v1.0,High,os,csv,Validates core directory/file structure
+tests/conftest.py,tests/conftest.py,Complete,v1.0,High,pytest,FastAPI,Shared test fixtures/mocks
+tests/test_full_flow.py,tests/test_full_flow.py,Complete,v1.0,High,unittest,asyncio,Tests voice-to-AI workflow
+tests/test_service_control.py,tests/test_service_control.py,Complete,v1.0,High,pytest,FastAPI,Service lifecycle testing
+tests/integration_tests.py,tests/integration_tests.py,Complete,v1.0,High,API Clients,,Third-party API connectivity checks
+tests/mock_openai.py,tests/mock_openai.py,Complete,v1.0,Medium,FastAPI,uvicorn,OpenAI API mock server
+tests/post_reset_validation.py,tests/post_reset_validation.py,Complete,v1.0,Medium,importlib,Post-reset system checks
+tests/start_test_services.py,tests/start_test_services.py,Complete,v1.0,Low,subprocess,threading,Test service manager
+tests/test_ai_query.py,tests/test_ai_query.py,Complete,v1.0,High,pytest,AI query endpoint tests
+tests/test_commands.py,tests/test_commands.py,Complete,v1.0,High,pytest,Command system tests
+tests/test_structure.py,tests/test_structure.py,Complete,v1.0,High,pytest,os,Directory/file existence checks
+tests/test_ai_router.py,tests/test_ai_router.py,Complete,v1.0,High,pytest,AI provider routing logic
+tests/test_memory.py,tests/test_memory.py,Not Started,v1.0,High,Memory System,,Empty - needs memory tests
+tests/test_routes.py,tests/test_routes.py,Not Started,v1.0,High,API Endpoints,,Empty - needs route tests
+tests/test_tools.py,tests/test_tools.py,Not Started,v1.0,Medium,CLI Tools,,Empty - needs tools tests
+tests/test_telegram_bot.py,tests/test_telegram_bot.py,Not Started,v1.0,High,Bot Integration,,""
+tests/test_vscode_sync.py,tests/test_vscode_sync.py,Not Started,v1.0,High,Editor Sync,,""
+core/data_handler.py,core/data_handler.py,Complete,v1.0,High,json,csv,Handles data reading/writing (CSV, JSON)
+core/notification.py,core/notification.py,Complete,v1.0,High,requests,Telegram messaging,Send notifications via Telegram
+core/file_sync.py,core/file_sync.py,Complete,v1.0,High,shutil,os,File synchronization logic
+core/error_logger.py,core/error_logger.py,Complete,v1.0,High,logging,Error logging,Logs errors to a file
+config/path_mapping.json,config/path_mapping.json,Complete,v1.0,Medium,,Path mapping configuration
+config/config.py,config/config.py,Complete,v1.0,Medium,,Main configuration file,Contains project-wide configurations
+frontend/cosmic.css,frontend/cosmic.css,Complete,v1.3,Medium,CSS3,Cosmic theme variables,Vanilla CSS
+frontend/command_ui.js,frontend/command_ui.js,Complete,v1.1,High,DOM API,Command toggle UI,Vanilla JavaScript
+frontend/CommandPanel.js,frontend/CommandPanel.js,Complete,v1.2,High,Vue 3,Searchable command list,Vue SFC
+frontend/vue_app.js,frontend/vue_app.js,Complete,v1.0,High,Vue 3,App initialization,Vue 3
+frontend/index.html,frontend/index.html,Complete,v1.1,High,HTML5,Root template,HTML5
+backend/dashboard_console.py,backend/dashboard_console.py,Complete,v1.1,High,Flask,Legacy dashboard console
+backend/proxy_router.py,backend/proxy_router.py,Complete,v1.0,Medium,FastAPI,Proxy routing,Handles routing logic between services
+backend/security_middleware.py,backend/security_middleware.py,Complete,v1.0,High,,Security and permission validation
+backend/sync_service.py,backend/sync_service.py,Complete,v1.0,High,watchdog,File synchronization service
+vscode_integration/secure_sync.py,vscode_integration/secure_sync.py,Complete,v1.2,High,AESGCMEncryption, AuthValidator,Secure WebSocket sync,JWT validation + E2E encryption
+vscode_integration/sync_server.py,vscode_integration/sync_server.py,Complete,v1.1,Medium,websockets,Broadcast messaging,Basic connection management
+Module,Path,Status,Version,Priority,Dependencies,Features,Notes
+boot_loader,system/boot_loader.py,Complete,v1.0,Critical,SystemInitializer,SlickLogicEngine,System startup sequence
+maintenance_scheduler,system/maintenance_scheduler.py,Complete,v1.0,Medium,threading,Memory decay scheduler
+conflict_resolver,system/sync/conflict_resolver.py,Complete,v1.0,High,difflib,File conflict resolution
+sync_manager,system/sync_manager.py,Complete,v1.0,High,watchdog,requests,File synchronization handler
+version_manager,system/version_manager.py,Complete,v1.0,High,json,pathlib,File version control
+__init__,system/__init__.py,Complete,v1.0,Low,,Package marker
+ai_core/ai_preferences_details.csv,ai_core/ai_preferences_details.csv,Complete,v1.0,Medium,None,AI preferences data,Stores preferences for AI operations
+ai_core/memupdate.py,ai_core/memupdate.py,Complete,v1.0,High,pickle,zlib,Memory update functionality,Handles memory snapshotting
+ai_core/ai_route.py,ai_core/ai_route.py,Complete,v1.0,High,FastAPI,AI route handling,Routes AI requests to the respective providers
+ai_core/data_handler.py,ai_core/data_handler.py,Complete,v1.0,High,json,csv,Data reading and writing,Handles CSV and JSON data files
+ai_core/error_logger.py,ai_core/error_logger.py,Complete,v1.0,High,logging,Error logging,Logs errors related to AI processing
+app/app.py,app/app.py,Complete,v1.0,High,FastAPI,API initialization,Core FastAPI application
+app/main.py,app/main.py,Complete,v1.0,High,FastAPI,API endpoints,Main application routing
+app/ai.py,app/ai.py,Complete,v1.0,High,AI,AI controller and handlers,Contains all AI-related operations
+app/security.py,app/security.py,Complete,v1.0,Critical,FastAPI,Security handling,Contains authentication and authorization logic
+backend/web_server.py,backend/web_server.py,Complete,v1.0,High,FastAPI,uvicorn,Main web server implementation
+backend/proxy_router.py,backend/proxy_router.py,Complete,v1.0,Medium,FastAPI,Proxy routing,Handles routing logic between services
+backend/ai_route.py,backend/ai_route.py,Complete,v1.0,High,FastAPI,CommandManager, AIConnector,AI request handling
+backend/api.py,backend/api.py,Complete,v1.2,High,FastAPI,CommandManager, AIConnector,Command/AI endpoints
+backend/security_middleware.py,backend/security_middleware.py,Complete,v1.0,High,,Security and permission validation
+frontend/chat_interface.html,frontend/chat_interface.html,Complete,v1.0,High,Bootstrap,Chart.js,Real-time messaging,Dark theme with responsive design
+frontend/command_interface.html,frontend/command_interface.html,Complete,v1.0,High,Bootstrap,CLI emulator,Integrated with backend API
+frontend/user_input.html,frontend/user_input.html,Complete,v1.0,High,None,Text input with send button,Handles both chat and commands
+frontend/message_display.html,frontend/message_display.html,Complete,v1.0,High,None,User/AI message bubbles,Auto-scrolling chat history
+frontend/command_history.html,frontend/command_history.html,Complete,v1.0,Medium,None,Shows last 5 commands,Persisted via API
+frontend/command_suggestions.html,frontend/command_suggestions.html,Complete,v1.0,Medium,None,Quick-access buttons,Common CLI commands
+frontend/output_display.html,frontend/output_display.html,Complete,v1.0,High,None,Pre-formatted text,Shows command execution results
+tests/check_project_structure.py,tests/check_project_structure.py,Complete,v1.0,High,os,csv,Validates core directory/file structure
+tests/conftest.py,tests/conftest.py,Complete,v1.0,High,pytest,FastAPI,Shared test fixtures/mocks
+tests/test_full_flow.py,tests/test_full_flow.py,Complete,v1.0,High,unittest,asyncio,Tests voice-to-AI workflow
+tests/test_service_control.py,tests/test_service_control.py,Complete,v1.0,High,pytest,FastAPI,Service lifecycle testing
+tests/integration_tests.py,tests/integration_tests.py,Complete,v1.0,High,API Clients,,Third-party API connectivity checks
+tests/mock_openai.py,tests/mock_openai.py,Complete,v1.0,Medium,FastAPI,uvicorn,OpenAI API mock server
+tests/post_reset_validation.py,tests/post_reset_validation.py,Complete,v1.0,Medium,importlib,Post-reset system checks
+tests/start_test_services.py,tests/start_test_services.py,Complete,v1.0,Low,subprocess,threading,Test service manager
+tests/test_ai_query.py,tests/test_ai_query.py,Complete,v1.0,High,pytest,AI query endpoint tests
+tests/test_commands.py,tests/test_commands.py,Complete,v1.0,High,pytest,Command system tests
+tests/test_structure.py,tests/test_structure.py,Complete,v1.0,High,pytest,os,Directory/file existence checks
+tests/test_ai_router.py,tests/test_ai_router.py,Complete,v1.0,High,pytest,AI provider routing logic
+tests/test_memory.py,tests/test_memory.py,Not Started,v1.0,High,Memory System,,Empty - needs memory tests
+tests/test_routes.py,tests/test_routes.py,Not Started,v1.0,High,API Endpoints,,Empty - needs route tests
+tests/test_tools.py,tests/test_tools.py,Not Started,v1.0,Medium,CLI Tools,,Empty - needs tools tests
+tests/test_telegram_bot.py,tests/test_telegram_bot.py,Not Started,v1.0,High,Bot Integration,,""
+tests/test_vscode_sync.py,tests/test_vscode_sync.py,Not Started,v1.0,High,Editor Sync,,""
+core/data_handler.py,core/data_handler.py,Complete,v1.0,High,json,csv,Handles data reading/writing (CSV, JSON)
+core/notification.py,core/notification.py,Complete,v1.0,High,requests,Telegram messaging,Send notifications via Telegram
+core/file_sync.py,core/file_sync.py,Complete,v1.0,High,shutil,os,File synchronization logic
+core/error_logger.py,core/error_logger.py,Complete,v1.0,High,logging,Error logging,Logs errors to a file
+config/path_mapping.json,config/path_mapping.json,Complete,v1.0,Medium,,Path mapping configuration
+config/config.py,config/config.py,Complete,v1.0,Medium,,Main configuration file,Contains project-wide configurations
+frontend/cosmic.css,frontend/cosmic.css,Complete,v1.3,Medium,CSS3,Cosmic theme variables,Vanilla CSS
+frontend/command_ui.js,frontend/command_ui.js,Complete,v1.1,High,DOM API,Command toggle UI,Vanilla JavaScript
+frontend/CommandPanel.js,frontend/CommandPanel.js,Complete,v1.2,High,Vue 3,Searchable command list,Vue SFC
+frontend/vue_app.js,frontend/vue_app.js,Complete,v1.0,High,Vue 3,App initialization,Vue 3
+frontend/index.html,frontend/index.html,Complete,v1.1,High,HTML5,Root template,HTML5
+backend/dashboard_console.py,backend/dashboard_console.py,Complete,v1.1,High,Flask,Legacy dashboard console
+backend/proxy_router.py,backend/proxy_router.py,Complete,v1.0,Medium,FastAPI,Proxy routing,Handles routing logic between services
+backend/security_middleware.py,backend/security_middleware.py,Complete,v1.0,High,,Security and permission validation
+backend/sync_service.py,backend/sync_service.py,Complete,v1.0,High,watchdog,File synchronization service
+vscode_integration/secure_sync.py,vscode_integration/secure_sync.py,Complete,v1.2,High,AESGCMEncryption, AuthValidator,Secure WebSocket sync,JWT validation + E2E encryption
+vscode_integration/sync_server.py,vscode_integration/sync_server.py,Complete,v1.1,Medium,websockets,Broadcast messaging,Basic connection management
+Color_tagged/reports/Adv_dashboard.csv,Color_tagged/reports/Adv_dashboard.csv,Complete,v1.0,Medium,,Advanced dashboard report
+Color_tagged/reports/engine_report.csv,Color_tagged/reports/engine_report.csv,Complete,v1.0,Medium,,Engine performance report
+Color_tagged/reports/shared_report.csv,Color_tagged/reports/shared_report.csv,Complete,v1.0,Medium,,Shared report data
+Color_tagged/reports/Slick_AI_SYSTEM_report.csv,Color_tagged/reports/Slick_AI_SYSTEM_report.csv,Complete,v1.0,High,,Overall system report
+Color_tagged/reports/interfaces_report.csv,Color_tagged/reports/interfaces_report.csv,Complete,v1.0,Medium,,Interfaces usage report
+Color_tagged/reports/slick_report.csv,Color_tagged/reports/slick_report.csv,Complete,v1.0,High,,Slick system activity report
+Color_tagged/reports/ai_core_report.csv,Color_tagged/reports/ai_core_report.csv,Complete,v1.0,High,,AI core report
+Color_tagged/reports/knowledge_report.csv,Color_tagged/reports/knowledge_report.csv,Complete,v1.0,Medium,,Knowledge usage report
+Color_tagged/reports/src_report.csv,Color_tagged/reports/src_report.csv,Complete,v1.0,Low,,Source report
+Color_tagged/reports/app_report.csv,Color_tagged/reports/app_report.csv,Complete,v1.0,High,,App performance report
+Color_tagged/reports/learning_report.csv,Color_tagged/reports/learning_report.csv,Complete,v1.0,Medium,,Learning module report
+Color_tagged/reports/system_report.csv,Color_tagged/reports/system_report.csv,Complete,v1.0,High,,System overview report
+Color_tagged/reports/backend_report.csv,Color_tagged/reports/backend_report.csv,Complete,v1.0,High,,Backend report
+Color_tagged/reports/logic_report.csv,Color_tagged/reports/logic_report.csv,Complete,v1.0,Medium,,Logic module report
+Color_tagged/reports/templates_report.csv,Color_tagged/reports/templates_report.csv,Complete,v1.0,Low,,Template usage report
+Color_tagged/reports/cognative_report.csv,Color_tagged/reports/cognative_report.csv,Complete,v1.0,Low,,Cognitive module report
+Color_tagged/reports/loose_files_report.csv,Color_tagged/reports/loose_files_report.csv,Complete,v1.0,Low,,Loose files report
+Color_tagged/reports/config_report.csv,Color_tagged/reports/config_report.csv,Complete,v1.0,Medium,,Configuration report
+Color_tagged/reports/memory_report.csv,Color_tagged/reports/memory_report.csv,Complete,v1.0,High,,Memory report
+Color_tagged/reports/utils_report.csv,Color_tagged/reports/utils_report.csv,Complete,v1.0,Medium,,Utility module report
+Color_tagged/reports/deploment_report.csv,Color_tagged/reports/deploment_report.csv,Complete,v1.0,High,,Deployment report
+Color_tagged/reports/scripts_report.csv,Color_tagged/reports/scripts_report.csv,Complete,v1.0,Medium,,Script execution report
+Color_tagged/reports/web_report.csv,Color_tagged/reports/web_report.csv,Complete,v1.0,Medium,,Web module report
+Color_tagged/reports/dev_env_report.csv,Color_tagged/reports/dev_env_report.csv,Complete,v1.0,Low,,Development environment report
+Color_tagged/reports/security_report.csv,Color_tagged/reports/security_report.csv,Complete,v1.0,High,,Security report
+Color_tagged/reports/docs_report.csv,Color_tagged/reports/docs_report.csv,Complete,v1.0,Low,,Documentation report
+Color_tagged/reports/services_report.csv,Color_tagged/reports/services_report.csv,Complete,v1.0,Medium,,Services module report

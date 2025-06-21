@@ -1,0 +1,12 @@
+Directory,File,Action,Color,Status,Instructions,Version,Dependencies
+interfaces/telegram,bot.py,Update,Blue (#60A5FA),Active,"Main Telegram bot handler","v1.8","telegram, core.controller"
+interfaces/telegram,secure_bot.py,Update,Blue (#60A5FA),Active,"Security-enhanced bot","v1.3","security.system"
+interfaces/telegram,voice_handler.py,Update,Blue (#60A5FA),Active,"Voice message processor","v1.5","telegram, openai"
+interfaces/telegram,mediation_engine.py,Update,Blue (#60A5FA),Active,"Message routing engine","v1.2","-"
+interfaces/telegram,telegram_bot.py,Keep,Green (#4ADE80),Reference,"Legacy bot implementation","v0.9","telegram"
+interfaces/telegram,requirements.txt,Keep,Green (#4ADE80),Active,"Python dependencies","v1.0","-"
+interfaces/vscode,wsl_bridge.py,Update,Blue (#60A5FA),Active,"WSL/Windows path bridge","v1.4","core.controller"
+interfaces/web,dashboard.html,Update,Blue (#60A5FA),Active,"Combined web interface","v2.1","Vue.js"
+interfaces/web,proxy.py,Keep,Green (#4ADE80),Active,"NGINX configuration","v1.0","-"
+interfaces/web,server.py,Update,Blue (#60A5FA),Active,"FastAPI web server","v1.7","fastapi, core.controller"
+interfaces/voice,voice.py,Update,Blue (#60A5FA),Active,"Voice interface","v1.2","speech_recognition"

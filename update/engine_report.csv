@@ -1,0 +1,4 @@
+Directory,File,Action,Color,Status,Instructions,Version,Dependencies
+engine,__init__.py,Keep,Green (#4ADE80),Active,"Package initialization","v1.0",-
+engine,logic_core.py,Update,Blue (#60A5FA),Active,"Main AI reasoning engine","v2.3","slick.config, slick.memory, slick.personality, slick.cognitive"
+engine,preference_applier.py,Update,Blue (#60A5FA),Active,"Applies user preferences to responses","v1.7","slick.config"

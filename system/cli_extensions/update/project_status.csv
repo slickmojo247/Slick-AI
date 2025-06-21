@@ -1,0 +1,80 @@
+Module,Path,Status,Version,Priority,LastUpdated,Owner,Dependencies,Notes
+CLI Core,cli/__main__.py,Complete,v1.2,High,2025-06-18,CLI Team,"click,httpx",Global entry point installed
+CLI Installer,install.py,Complete,v1.1,High,2025-06-18,DevOps Team,,Makes CLI globally available
+File Ops,cli/file_ops.py,Complete,v1.3,High,2025-06-18,CLI Team,"click,pathlib",Tagging and file management
+AI Tools,cli/ai_tools.py,Complete,v1.2,High,2025-06-18,AI Team,"click,httpx",AI model interactions
+Memory Ops,cli/memory.py,Complete,v1.1,Medium,2025-06-18,AI Team,"",Memory management commands
+Interactive Shell,cli/shell.py,Complete,v1.0,Medium,2025-06-18,CLI Team,"cmd,click",REPL interface
+Setup Config,setup.py,Complete,v1.1,High,2025-06-18,DevOps Team,"setuptools",Package configuration
+Security,api/security.py,Complete,v1.4,Critical,2025-06-18,Security Team,"fastapi",API key verification
+Think Router,api/routes/think.py,Complete,v1.1,Medium,2025-06-18,AI Team,"fastapi",Knowledge integration
+Bot Router,api/routes/bot.py,Needs Testing,v0.9,High,2025-06-18,Integration Team,"telegram",Telegram bot setup
+Telegram Router,api/routes/telegram.py,Needs Testing,v0.9,High,2025-06-18,Integration Team,"telegram",VSCode integration
+DeepSeek Integration,deepseek_integration.py,Complete,v1.3,High,2025-06-18,AI Team,"aiohttp",Full API client
+Learn Mode,cli/learn_mode.py,Complete,v1.1,Medium,2025-06-18,AI Team,"",Interactive learning
+Help System,cli/help.py,Needs Update,v0.8,Medium,2025-06-18,Doc Team,"rich",Command documentation
+Plain Knowledge,cli/plain_knowledge.py,Complete,v1.2,Medium,2025-06-18,AI Team,"",Text knowledge management
+Glossary Sync,cli/glossary_sync.py,Complete,v1.1,Low,2025-06-18,AI Team,"csv",CSV glossary importer
+Order Manager,cli/order_manager.py,Needs Testing,v0.9,Medium,2025-06-18,System Team,"threading",Background tasks
+Report Generator,cli/report.py,Complete,v1.1,Medium,2025-06-18,System Team,"click",Project analysis
+Core Router,api/routes/core.py,Complete,v1.3,High,2025-06-18,Core Team,"fastapi",WebSocket endpoints
+VSCode Router,api/routes/vscode.py,Complete,v1.2,High,2025-06-18,Integration Team,"fastapi",VSCode sync
+AI Router,api/routes/ai.py,Complete,v1.3,High,2025-06-18,AI Team,"openai",AI routing logic
+Files API,api/files.py,Complete,v1.2,High,2025-06-18,System Team,"fastapi",File management
+Deploy Tools,cli/deploy_tools.py,Needs Work,v0.5,Low,2025-06-18,DevOps Team,"",Placeholder implementation
+Main App,main.py,Complete,v1.4,High,2025-06-18,Core Team,"fastapi",FastAPI application
+Command,Module,Status,Priority,Notes
+sync,cli/sync.py,Not Started,High,File synchronization
+config,cli/config.py,Not Started,Medium,Configuration management
+bridge,cli/bridge.py,Not Started,High,Channel bridging
+service,cli/services.py,Not Started,High,Service management
+test,cli/test.py,Not Started,Medium,Testing commands
+visualize,cli/visualize.py,Not Started,Low,Data visualization
+absorb,cli/absorb.py,Not Started,Medium,Knowledge absorption
+recall,cli/recall.py,Not Started,Medium,Memory retrieval
+transform,cli/transform.py,Not Started,Low,Data transformation
+structure,cli/structure.py,Not Started,Medium,Project structuring
+Folder/File,Type,Status,Priority,Notes
+cli/absorb.py,File,Not Started,Medium,Knowledge absorption
+cli/recall.py,File,Not Started,Medium,Memory recall system
+cli/visualize/,Directory,Not Started,Low,Visualization tools
+cli/plugins/,Directory,Not Started,Medium,Plugin system
+tests/cli/,Directory,Not Started,High,CLI test cases
+docs/cli_guide.md,File,Not Started,Medium,CLI documentation
+examples/,Directory,Not Started,Low,Usage examples
+
+Path,Type,Status,Version,Priority,Dependencies,Owner,LastUpdated,Notes
+cli/__main__.py,Module,Complete,v1.2,High,"click, httpx",CLI Team,2025-06-18,Global entry point
+cli/plain_knowledge.py,Module,Complete,v1.2,Medium,"",AI Team,2025-06-18,Text knowledge management
+system/sync_manager.py,Module,Complete,v1.0,High,"watchdog, requests",System Team,2025-06-18,File sync handler
+system/version_manager.py,Module,Complete,v1.0,High,"json, pathlib",System Team,2025-06-18,File version control
+tests/start_test_services.py,Test,Complete,v1.1,Medium,"subprocess, threading",QA Team,2025-06-18,Test service manager
+tests/test_ai_query.py,Test,Complete,v1.0,High,pytest,QA Team,2025-06-18,AI query tests
+utils/event_bus.py,Utility,Complete,v1.1,High,"logging, typing",Core Team,2025-06-18,Pub/sub system
+vscode_integration/secure_sync.py,Integration,Complete,v1.2,High,"AESGCM, JWT",Integration Team,2025-06-18,VSCode WebSocket sync
+web/api.py,Backend,Complete,v1.2,High,"FastAPI",Web Team,2025-06-18,Command/AI endpoints
+web/static/js/CommandPanel.js,Component,Complete,v1.2,High,"Vue 3",Web Team,2025-06-18,Command UI
+project_status.csv,Data,Complete,v1.0,Medium,,System Team,2025-06-18,Module tracking
+reset_tool.py,Utility,Complete,v1.0,High,"click, pandas",Core Team,2025-06-18,Memory reset operations
+slick_cli.py,Module,Complete,v1.0,High,"requests",Core Team,2025-06-18,Main CLI entrypoint
+SLICK.html,Template,Complete,v1.1,High,"Bootstrap, Chart.js",Web Team,2025-06-18,Dashboard template
+Path,Type,Status,Version,Priority,Dependencies,Owner,LastUpdated,Notes
+web_interface/web_server.py,Backend,Active,v1.2,High,"FastAPI, uvicorn",Core Team,2025-06-19,Main API server
+web_interface/control_dashboard.html,Frontend,Active,v1.3,High,"Chart.js, Bootstrap",Web Team,2025-06-19,Enhanced monitoring UI
+web_interface/index.html,Frontend,Active,v1.1,Medium,,Web Team,2025-06-18,Legacy chat interface
+web_interface/programmer_interface.html,Frontend,Active,v1.4,High,"CodeMirror, Vue",Web Team,2025-06-19,Updated code editor
+web_interface/__init__.py,Module,Active,v1.0,Low,,Core Team,2025-06-18,Package init
+web_interface/dashboard_console.py,Backend,Deprecated,v0.9,Medium,"Flask",Core Team,2025-06-15,Being phased out
+web_interface/path_mapping.json,Config,Active,v1.1,Medium,,System Team,2025-06-19,Updated path config
+web_interface/proxy_router.py,Backend,Active,v1.1,High,"FastAPI",Core Team,2025-06-19,Enhanced proxy routes
+web_interface/security_middleware.py,Utility,Active,v1.2,High,"JWT",Security Team,2025-06-19,Added JWT validation
+web_interface/sync_service.py,Service,Active,v1.3,High,"watchdog, gitpython",System Team,2025-06-19,Improved sync logic
+cli/__main__.py,Module,Active,v1.3,High,"click, httpx",CLI Team,2025-06-19,Main CLI entrypoint
+system/sync_manager.py,Module,Active,v1.1,High,"watchdog, requests",System Team,2025-06-19,File sync handler
+tests/test_ai_query.py,Test,Active,v1.1,High,pytest,QA Team,2025-06-19,Updated test cases
+config/project_status.csv,Data,Active,v1.1,Medium,,System Team,2025-06-19,Current file
+
+Path,Type,Status,Version,Priority,Dependencies,Owner,LastUpdated,Notes
+cli/__main__.py,Module,Active,v1.3,High,"click, httpx",CLI Team,2025-06-20,Added async support
+web_interface/web_server.py,Backend,Active,v1.2,High,"FastAPI>=0.95",Core Team,2025-06-20,WebSocket routes
+system/sync_manager.py,Module,Active,v1.4,High,"watchdog>=3.0",System Team,2025-06-20,Fixed race condition

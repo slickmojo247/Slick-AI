@@ -1,0 +1,160 @@
+"""
+SLICK_AI_CORE.py - Consolidated AI System Components
+"""
+
+# ==================== IMPORTS ====================
+import os
+import re
+import csv
+import json
+import logging
+import sqlite3
+import asyncio
+import httpx
+from pathlib import Path
+from typing import Dict, List, Optional, Union, Literal
+from datetime import datetime
+from collections import deque
+from abc import ABC, abstractmethod
+from cryptography.fernet import Fernet
+
+# ==================== CORE SYSTEM ====================
+class Action(ABC):
+    """Base action class with priority support"""
+    priority: int = 0
+    
+    @property
+    @abstractmethod
+    def pattern(self) -> str:
+        pass
+    
+    @abstractmethod
+    async def execute(self, match: re.Match, context: dict) -> str:
+        pass
+
+class LightAction(Action):
+    priority = 1
+    @property
+    def pattern(self) -> str:
+        return r'turn (on|off) (?:the )?lights?'
+    async def execute(self, match: re.Match, context: dict) -> str:
+        return f"💡 Lights turned {match.group(1)}"
+
+class MemorySystem:
+    """NPC memory manager with sentiment analysis"""
+    def __init__(self):
+        self.npc_memory = {}  # {npc_id: deque()}
+        self.memory_limit = 10
+
+    def remember(self, npc_id, event):
+        if npc_id not in self.npc_memory:
+            self.npc_memory[npc_id] = deque(maxlen=self.memory_limit)
+        self.npc_memory[npc_id].appendleft(event)
+
+    def analyze_sentiment(self, npc_id) -> Literal["neutral", "grateful", "angry"]:
+        memories = self.recall(npc_id)
+        if not memories: return "neutral"
+        mood = sum(1 if "gifted" in e else -1 if "attacked" in e else 0 for e in memories)
+        return "grateful" if mood > 2 else "angry" if mood < -2 else "neutral"
+
+# ==================== AI CONNECTORS ====================
+class AIConnector:
+    """Unified interface for AI services"""
+    def __init__(self):
+        self.clients = {
+            'openai': AsyncOpenAI(api_key=os.getenv('OPENAI_KEY')),
+            'deepseek': httpx.AsyncClient(
+                base_url='https://api.deepseek.com/v1',
+                headers={'Authorization': f"Bearer {os.getenv('DEEPSEEK_KEY')}"}
+            )
+        }
+
+    async def generate(self, prompt: str, model: Literal['gpt-4', 'deepseek-coder', 'hybrid'] = 'hybrid') -> str:
+        if model == 'hybrid':
+            model = 'deepseek-coder' if self._is_code_request(prompt) else 'gpt-4'
+        return await self._deepseek_request(prompt) if 'deepseek' in model else await self._openai_request(prompt)
+
+    def _is_code_request(self, prompt: str) -> bool:
+        code_keywords = {'code', 'debug', 'syntax', 'algorithm'}
+        return any(kw in prompt.lower() for kw in code_keywords)
+
+# ==================== API ENDPOINTS ====================
+class APIRouter:
+    """Consolidated FastAPI routes"""
+    def __init__(self):
+        self.routes = []
+        
+    def add_route(self, path: str, method: str, handler: callable):
+        self.routes.append({
+            'path': path, 
+            'method': method, 
+            'handler': handler
+        })
+
+    def register_routes(self, app):
+        for route in self.routes:
+            getattr(app, route['method'].lower())(
+                route['path'])(route['handler'])
+
+# ==================== UTILITIES ====================
+class FileManager:
+    """Enhanced file operations with SQLite tracking"""
+    def __init__(self, db_path='data/file_status.db'):
+        self.db = sqlite3.connect(db_path)
+        self._init_db()
+    
+    def _init_db(self):
+        self.db.execute('''CREATE TABLE IF NOT EXISTS files (
+            path TEXT PRIMARY KEY, status TEXT, metadata TEXT)''')
+
+    def get_tree(self, root: str = None) -> List[Dict]:
+        root = Path(root) if root else Path.cwd()
+        return [self._file_info(item) for item in root.iterdir()]
+
+class SecurityManager:
+    """Encryption and auth handler"""
+    def __init__(self):
+        self.cipher = Fernet(os.getenv('MASTER_KEY'))
+        
+    def encrypt(self, data: str) -> bytes:
+        return self.cipher.encrypt(data.encode())
+        
+    def decrypt(self, payload: bytes) -> str:
+        return self.cipher.decrypt(payload).decode()
+
+# ==================== MAIN CONTROLLER ====================
+class SlickController:
+    """Orchestrates all system components"""
+    def __init__(self):
+        self.actions: List[Action] = []
+        self.ai = AIConnector()
+        self.file_manager = FileManager()
+        self.security = SecurityManager()
+        
+    async def handle_request(self, input_str: str, context: dict = None) -> str:
+        for action in sorted(self.actions, key=lambda a: a.priority, reverse=True):
+            if match := re.search(action.pattern, input_str, re.IGNORECASE):
+                return await action.execute(match, context or {})
+        return await self.ai.generate(input_str)
+
+# ==================== TRAINING SYSTEM ====================
+class TrainingSession:
+    """Modular training framework"""
+    def __init__(self, name: str):
+        self.steps = []
+        
+    def add_step(self, description: str, validator: callable):
+        self.steps.append((description, validator))
+        
+    async def execute(self) -> List[tuple]:
+        return [(desc, await validator()) for desc, validator in self.steps]
+
+# ==================== EXECUTION EXAMPLE ====================
+if __name__ == "__main__":
+    async def main():
+        controller = SlickController()
+        controller.actions.extend([LightAction()])
+        
+        print(await controller.handle_request("turn on the lights"))
+    
+    asyncio.run(main())

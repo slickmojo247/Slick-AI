@@ -1,0 +1,85 @@
+Category,Component Name,File Path,Description,Dependencies,Key Features,Status,Version,Last Updated
+Core,Config Manager,core/config.py,Central configuration management,"dotenv, os",Env vars, secrets management,Complete,1.0,2025-06-15
+Core,Event Bus,core/event_bus.py,System-wide event communication,"-",Pub/sub pattern,Complete,1.2,2025-06-15
+Core,Knowledge Graph,core/knowledge.py,Entity relationship system,"networkx",Semantic search,Complete,1.1,2025-06-15
+AI,AI Manager,ai/manager.py,Unified AI provider interface,"openai, deepseek-coder, httpx",Smart routing,Complete,1.3,2025-06-15
+AI,OpenAI Provider,ai/providers/openai.py,OpenAI API wrapper,"openai",GPT-4, async calls,Complete,1.0,2025-06-15
+AI,DeepSeek Provider,ai/providers/deepseek.py,DeepSeek API wrapper,"httpx",Code specialization,Complete,1.0,2025-06-15
+Interface,FastAPI App,interfaces/web/fastapi_app.py,API endpoints,"fastapi, uvicorn",REST/WebSocket,Complete,1.2,2025-06-15
+Interface,Telegram Bot,interfaces/telegram.py,Telegram integration,"python-telegram-bot",/code, /vscode,Complete,1.1,2025-06-15
+Command System,CLI Engine,cli/slick_cli.py,User command processor,"click, pygments",report/see/path,Complete,1.1,2025-06-15
+Command System,Registry,command_system/registry.py,Command storage,"-",Dynamic registration,Complete,1.0,2025-06-15
+Service,Service Manager,services/manager.py,Process lifecycle,"subprocess, psutil",Start/stop/restart,Complete,1.1,2025-06-15
+Service,Monitor,services/monitor.py,Health checks,"psutil",Auto-recovery,Complete,1.0,2025-06-15
+Thinking,Session Manager,thinking/sessions.py,Active context handler,"sqlite3",State persistence,Complete,1.2,2025-06-15
+Thinking,Recall System,thinking/recall.py,Memory retrieval,"numpy",Contextual search,Complete,1.0,2025-06-15
+Thinking,Thought Generator,thinking/generate.py,Idea synthesis,"transformers",Multi-model prompts,Complete,1.1,2025-06-15
+Security,Mediation Engine,security/mediation.py,Request validation,"-",Telegram ACLs,Complete,1.0,2025-06-15
+Security,Anomaly Detector,security/anomaly.py,Threat detection,"scikit-learn",Real-time alerts,Complete,1.0,2025-06-15
+Learning,Input Corrector,learning/input_fix.py,Spell/context fixer,"symspellpy",Common mistakes DB,Complete,1.0,2025-06-15
+Learning,Knowledge Enhancer,learning/enhancer.py,Data enrichment,"spacy",Entity linking,Complete,1.1,2025-06-15
+Learning,Retention System,learning/retention.py,Long-term storage,"sqlite3",Spaced repetition,Complete,1.0,2025-06-15
+Dev,VSCode Integrator,dev/vscode.py,WSL sync,"pywin32",Code mirroring,Complete,1.0,2025-06-15
+Dev,Testing Flow,dev/testing_flow.py,Automated tests,"pytest",E2E scenarios,Complete,1.0,2025-06-15
+Frontend,Dashboard,web_interface/src/views/Dashboard.vue,Control panel,"vue, socket.io",Real-time stats,Complete,1.3,2025-06-15
+Frontend,AI Console,web_interface/src/components/AIConsole.vue,Chat interface,"vue, axios",Multi-provider UI,Complete,1.1,2025-06-15
+Database,Knowledge Base,data/knowledge.db,Structured storage,"sqlite3",Full-text search,Complete,1.0,2025-06-15
+Database,Command History,data/command_history.db,Audit log,"sqlite3",Timestamped,Complete,1.0,2025-06-15
+Script,Deploy,scripts/deploy.py,Production deploy,"fabric, docker",Zero-downtime,Complete,1.1,2025-06-15
+Script,Backup,scripts/backup.py,System backup,"zipfile, boto3",S3 uploads,Complete,1.0,2025-06-15
+Test,Unit Tests,tests/unit/,Component tests,"pytest",90% coverage,Complete,1.0,2025-06-15
+Test,Integration Tests,tests/integration/,System tests,"pytest, httpx",E2E flows,Complete,1.0,2025-06-15
+Category,Component Name,File Path,Description,Dependencies,Key Features,Status,Version,Last Updated
+Documentation,CLI Flowchart,docs/diagrams/cli_flow.svg,"How CLI commands route through SLICK","mermaid-js",User inputs → AI output,Complete,1.0,2025-06-15
+Documentation,Thinking Session Flow,docs/diagrams/thinking_flow.svg,"From input → recall → generation","mermaid-js",Context chaining,Complete,1.1,2025-06-15
+Documentation,Security Mediation Flow,docs/diagrams/security_flow.svg,"Telegram → Anomaly Detection","mermaid-js",Real-time alerts,Complete,1.0,2025-06-15
+Category,Component Name,File Path,Description,Dependencies,Key Features,Status,Version,Last Updated
+Documentation,System Architecture Flow,docs/diagrams/system_arch.svg,"Main SLICK controller routing","mermaid-js","VSC/Telegram → AI → Knowledge",Complete,1.2,2025-06-15
+Documentation,Testing Flow,docs/diagrams/testing_flow.svg,"Test environment sequence","mermaid-js","Unit → Integration → Deployment",Complete,1.1,2025-06-15
+Documentation,Version Control Flow,docs/diagrams/vcs_flow.svg,"Git sync between local/web","mermaid-js","Web Editor ↔ Git ↔ VSC",Complete,1.0,2025-06-15
+Documentation,Telegram API Flow,docs/diagrams/telegram_flow.svg,"Bot request routing","mermaid-js","Telegram → Slick → AI APIs",Complete,1.1,2025-06-15
+Documentation,Conflict Resolution Flow,docs/diagrams/conflict_flow.svg,"File sync conflict handling","mermaid-js","Auto/manual merge options",Complete,1.3,2025-06-15
+Documentation,Startup Sequence,docs/diagrams/startup_flow.svg,"Service initialization","mermaid-js","Test → Deploy → Dashboard",Complete,1.0,2025-06-15
+Documentation,Learning Flow,docs/diagrams/learning_flow.svg,"Input correction pipeline","mermaid-js","Spellcheck → Knowledge Enhancer",Complete,1.2,2025-06-15
+Documentation,Security Flow,docs/diagrams/security_flow.svg,"Telegram mediation engine","mermaid-js","Anomaly → Alerts → Dashboard",Complete,1.1,2025-06-15
+Documentation,Think Session Sequence,docs/diagrams/think_session.svg,"/think command lifecycle","mermaid-js","Telegram → Knowledge Base → User",Complete,1.0,2025-06-15
+Documentation,Full System Flow,docs/diagrams/full_system.svg,"All components interaction","mermaid-js","Dev Env + Learning + Security",Complete,1.3,2025-06-15
+Category,Component Name,File Path,Description,Dependencies,Key Features,Status,Version,Last Updated
+Security,Adaptive Security Monitor,security/monitor.py,"Real-time threat detection with learning integration","scikit-learn, pyod","Anomaly scoring + auto-patching",Complete,1.2,2025-06-16
+Security,Mediation Firewall,security/firewall.py,"API request validator","fastapi, jwt","Blocks malicious prompt patterns",Complete,1.1,2025-06-16
+Learning,Security Trainer,learning/security_trainer.py,"Generates adversarial test cases","transformers, torch","Red team simulation",Complete,1.0,2025-06-16
+Documentation,Security-Learning Flow,docs/diagrams/sec_learn.svg,"Feedback loop: Monitor → Trainer → Firewall","mermaid-js","Continuous hardening cycle",Complete,1.3,2025-06-16
+Category,Component,ResetAction,PreResetValue,PostResetValue,Timestamp,Status,ValidationCheck,MemoryImpact,AIProfileImpact,Notes
+Core,System,FullRestart,Active,Inactive,2025-06-16T14:30:00Z,Complete,ServiceStopped,High,Medium,"Graceful shutdown completed"
+Memory,ShortTerm,Flush,"{""count"":142,""size"":""1.4GB""}",Empty,2025-06-16T14:31:23Z,Complete,ZeroEntries,Full,High,"Retained emergency recall buffer"
+Memory,LongTerm,Archive,"{""nodes"":4587,""relations"":12890}",Compressed,2025-06-16T14:35:12Z,Complete,ArchiveVerified,Partial,Low,"Zipped to /backups/memory_20250616.zip"
+AI,OpenAI,KeyRotation,sk-xxx-OLD,sk-xxx-NEW,2025-06-16T14:36:45Z,Complete,APITestPassed,None,None,"Key rotated via provider portal"
+AI,DeepSeek,SessionReset,Session_8821,Session_NEW,2025-06-16T14:37:30Z,Complete,QueryTestOK,Low,Low,"Context window cleared"
+Cognitive,InterestEnhancer,ProfileReload,"{""interests"":[""quantum"",""ai""]}",Same,2025-06-16T14:38:00Z,Complete,ProfileValidated,None,Medium,"Verified against schema v3.2"
+Cognitive,LearningAdapter,StyleUpdate,Visual,Kinesthetic,2025-06-16T14:39:22Z,Complete,UIUpdated,None,High,"User requested change"
+Network,Telegram,BotRestart,Bot_OLD,Bot_NEW,2025-06-16T14:40:15Z,Complete,WebhookTested,None,None,"New token issued"
+Security,Vault,KeyRotation,FERNET_OLD,FERNET_NEW,2025-06-16T14:42:33Z,Complete,DecryptTestOK,High,High,"All configs re-encrypted"
+Data,KnowledgeGraph,ConsistencyCheck,98.7%,99.2%,2025-06-16T14:45:00Z,Complete,GraphValidated,Medium,None,"Fixed 12 broken edges"
+UI,Dashboard,ResetCache,"{""size"":""450MB""}","{""size"":""120MB""}",2025-06-16T14:47:12Z,Complete,LoadTestPassed,None,None,"Aggressive cache pruning"
+Backup,System,FullSnapshot,None,/backups/full_20250616,2025-06-16T14:50:00Z,Complete,MD5Verified,None,None,"Encrypted with AES-256"
+State,Personality,ResetTraits,"{""curiosity"":0.8}","{""curiosity"":0.85}",2025-06-16T14:52:00Z,Complete,ProfileSaved,None,High,"Adjusted per user feedback"
+State,LearningMode,Reset,"Advanced","Balanced",2025-06-16T14:53:15Z,Complete,ModeVerified,Low,Medium,"Default settings applied"
+Errors,Previous,Logged,142,Cleared,2025-06-16T14:55:00Z,Complete,LogsEmpty,None,None,"Archived to SIEM"
+Performance,Latency,Reset,"{""avg"":""320ms""}","{""avg"":""210ms""}",2025-06-16T14:56:30Z,Complete,LoadTestOK,None,None,"Network optimizations"
+Config,Environment,Rollback,v3.1.2,v3.0.9,2025-06-16T14:58:00Z,Complete,ConfigTested,None,Medium,"Temporary stability measure"
+Integration,VSCode,Relink,Connected,Reconnected,2025-06-16T15:00:00Z,Complete,SyncTested,None,None,"Fixed WSL path mapping"
+FilePath,ComponentType,ResetAction,PreResetVersion,PostResetVersion,Dependencies,Platform,ValidationChecks,Status,LastModified,Notes
+core/config.py,ConfigurationManager,FullRewrite,1.7.2,2.0.0,"dotenv>=1.0,pyyaml>=6.0","Windows/WSL/Linux","ConfigSchemaValidation,EnvVarTest",Verified,2025-06-17T09:15:00Z,"Added multi-environment support"
+core/event_bus.py,MessagingSystem,PartialReset,3.1.5,3.2.0,"redis>=4.5,pika>=1.3","CrossPlatform","MessageThroughputTest,ACKVerification",NeedsTesting,2025-06-17T10:30:00Z,"Upgraded to Redis streams"
+core/knowledge.py,KnowledgeGraph,SchemaMigration,2.4.1,3.0.0,"networkx>=3.2,sqlalchemy>=2.0","Linux-optimized","GraphConsistencyCheck,QueryBenchmark",Verified,2025-06-17T11:45:00Z,"Switched to directed multigraph"
+core/auth.py,SecurityModule,FullRewrite,0.9.3,1.2.0,"bcrypt>=4.0,oauthlib>=3.2","Windows/WSL","PenTestSimulation,TokenRotation",InProgress,2025-06-17T12:00:00Z,"JWT→PASETO migration"
+core/state_manager.py,SessionHandler,HotReload,1.5.0,1.5.1,"pickle5>=1.0","CrossPlatform","SessionRecoveryTest",Rollback,2025-06-17T13:20:00Z,"Reverted pickle5→cloudpickle"
+core/platform/win32.py,PlatformAdapter,DriverUpdate,4.2.0,4.3.0,"pywin32>=306,wmi>=1.5","Windows-only","DriverSignatureCheck",Verified,2025-06-17T14:10:00Z,"Added Win11 23H2 support"
+core/platform/wsl.py,PlatformAdapter,FullRewrite,2.1.0,3.0.0,"distro>=1.8","WSL-only","PathConversionTest,SystemdCheck",NeedsReview,2025-06-17T15:05:00Z,"New systemd integration"
+core/platform/linux.py,PlatformAdapter,SecurityPatch,3.0.2,3.0.3,"dbus-python>=1.3","Linux-native","SELinuxAudit",Verified,2025-06-17T16:30:00Z,"CVE-2025-3312 mitigation"
+core/ai/llm_proxy.py,AIInterface,ModelUpgrade,1.8.0,2.1.0,"openai>=1.12,httpx>=0.25","CrossPlatform","EmbeddingTest,TokenCounting",Verified,2025-06-17T17:15:00Z,"Upgraded to GPT-4-turbo"
+core/cli/parser.py,CommandProcessor,SyntaxUpdate,5.2.0,5.3.0,"click>=8.1,pygments>=2.15","CrossPlatform","CompletionTest,HelpGeneration",Verified,2025-06-17T18:00:00Z,"Added async command support"
+core/db/orm.py,DatabaseLayer,Migration,2.9.0,3.0.0,"sqlalchemy>=2.0,alembic>=1.12","CrossPlatform","TransactionStressTest",Pending,2025-06-17T19:20:00Z,"Breaking schema changes"
+core/telemetry.py,Monitoring,ConfigReset,0.5.1,0.6.0,"prometheus-client>=0.17","Linux-optimized","MetricExportTest",Verified,2025-06-17T20:05:00Z,"Added OTEL support"
+core/cache/redis.py,CachingSystem,ClusterUpgrade,4.0.2,4.1.0,"redis-py>=5.0","CrossPlatform","FailoverTest,ClusterReshard",Maintenance,2025-06-17T21:10:00Z,"Redis 7.2 compatibility"
+core/voice/transcriber.py,AudioProcessing,ModelSwap,1.3.0,1.4.0,"torch>=2.2,whisper>=2023","CUDA-required","WERBenchmark",Rollback,2025-06-17T22:00:00Z,"Reverted whisper-large→distil-medium"

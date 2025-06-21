@@ -1,0 +1,8 @@
+Module,Directory,File,Status,Version,Priority,LastUpdated,Owner,Notes
+Knowledge,knowledge/,api.py,Active,v1.2,High,2025-06-17,API Team,"FastAPI endpoints for knowledge services"
+Knowledge,knowledge/,base.py,Active,v1.1,High,2025-06-17,Core Team,"Base knowledge database classes"
+Knowledge,knowledge/,core.py,Active,v2.0,High,2025-06-17,Core Team,"Main knowledge core with SQLite integration"
+Knowledge,knowledge/,input_corrector.py,Active,v1.3,High,2025-06-17,NLP Team,"Input correction with regex patterns"
+Knowledge,knowledge/,learning.py,Active,v1.1,Medium,2025-06-17,Learning Team,"Learning path generator"
+Knowledge,knowledge/,spell_checker.py,Active,v1.4,High,2025-06-17,NLP Team,"Code-aware spell checking"
+Knowledge,knowledge_integration/,think_sessions_processor.py,Beta,v0.8,Medium,2025-06-17,Integration Team,"Think sessions to knowledge graph"

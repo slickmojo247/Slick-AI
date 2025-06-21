@@ -1,0 +1,45 @@
+4. Upgrade Script Template (upgrade/template_upgrade.py)
+
+python
+"""
+UPGRADE TEMPLATE - Merges:
+- 2.2.x-2.3.x.py
+- check_project_structure.py
+"""
+import os
+import csv
+from pathlib import Path
+
+class ProjectValidator:
+    """From check_project_structure.py"""
+    REQUIRED_PATHS = [
+        "slick/api/main.py",
+        "slick/core/ai_router.py"
+    ]
+    
+    @classmethod
+    def validate(cls):
+        return all(os.path.exists(p) for p in cls.REQUIRED_PATHS)
+
+class UpgradeEngine:
+    """From 2.2.x-2.3.x.py"""
+    UPGRADES = {
+        'config.py': [
+            ("DEFAULT_CONFIG = {", "DEFAULT_CONFIG = {\n    'delta_upgrades': True,")
+        ]
+    }
+    
+    def run_upgrade(self, path):
+        for file_pattern, replacements in self.UPGRADES.items():
+            if file_pattern in str(path):
+                self._apply_upgrade(path, replacements)
+                
+    def _apply_upgrade(self, path, replacements):
+        with open(path) as f:
+            content = f.read()
+        
+        for old, new in replacements:
+            content = content.replace(old, new)
+            
+        with open(path, 'w') as f:
+            f.write(content)

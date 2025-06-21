@@ -1,0 +1,25 @@
+Path,Type,Status,Version,Priority,Owner,LastUpdated,Notes
+cli/__main__.py,Module,Active,v1.3,High,CLI Team,2025-06-20,Added async support
+web_interface/web_server.py,Backend,Active,v1.2,High,Core Team,2025-06-20,WebSocket routes
+system/sync_manager.py,Module,Active,v1.4,High,System Team,2025-06-20,Fixed race condition
+cli/file_ops.py,Module,Complete,v1.3,High,CLI Team,2025-06-18,Tagging and file management
+cli/ai_tools.py,Module,Complete,v1.2,High,AI Team,2025-06-18,AI model interactions
+cli/memory.py,Module,Complete,v1.1,Medium,AI Team,2025-06-18,Memory management
+cli/shell.py,Module,Complete,v1.0,Medium,CLI Team,2025-06-18,REPL interface
+cli/help.py,Module,Needs Update,v0.8,Medium,Doc Team,2025-06-18,Command documentation
+cli/plain_knowledge.py,Module,Complete,v1.2,Medium,AI Team,2025-06-18,Text knowledge management
+cli/glossary_sync.py,Module,Complete,v1.1,Low,AI Team,2025-06-18,CSV glossary importer
+cli/order_manager.py,Module,Needs Testing,v0.9,Medium,System Team,2025-06-18,Background tasks
+cli/report.py,Module,Complete,v1.1,Medium,System Team,2025-06-18,Project analysis
+api/security.py,API,Complete,v1.4,Critical,Security Team,2025-06-18,API key verification
+api/routes/think.py,API,Complete,v1.1,Medium,AI Team,2025-06-18,Knowledge integration
+api/routes/bot.py,API,Needs Testing,v0.9,High,Integration Team,2025-06-18,Telegram bot setup
+api/routes/telegram.py,API,Needs Testing,v0.9,High,Integration Team,2025-06-18,VSCode integration
+api/routes/ai.py,API,Complete,v1.3,High,AI Team,2025-06-18,AI routing logic
+api/files.py,API,Complete,v1.2,High,System Team,2025-06-18,File management
+web_interface/control_dashboard.html,Front-end,Active,v1.3,High,Web Team,2025-06-19,Enhanced monitoring UI
+web_interface/programmer_interface.html,Front-end,Active,v1.4,High,Web Team,2025-06-19,Updated code editor
+web_interface/sync_service.py,Service,Active,v1.3,High,System Team,2025-06-19,Improved sync logic
+slick_cli.py,Module,Complete,v1.0,High,Core Team,2025-06-18,Main CLI entrypoint
+SLICK.html,Template,Complete,v1.1,High,Web Team,2025-06-18,Dashboard template
+project_status.csv,Data,Complete,v1.0,Medium,System Team,2025-06-18,Module tracking

@@ -1,0 +1,33 @@
+Path,Type,Status,Version,Priority,Category,Dependencies,Owner,LastUpdated,Notes,NewPath,Color,Action
+control_hub/mediators/telegram/core.py,Core,Active,v1.8,High,Mediator,"telegram, security.keys",Integration Team,2025-06-18,"Secure Telegram mediator with AI routing",control_hub/mediators/telegram/secure_mediator.py,Blue (#60A5FA),Update
+control_hub/voice_bridge/wireless_mic.py,Interface,Active,v1.0,High,Input,"pyaudio, cryptography",Audio Team,2025-06-18,"Encrypted wireless mic interface",control_hub/voice_bridge/secure_mic.py,Green (#4ADE80),Keep
+ai_core/assistants/deepseek.py,Integration,Active,v1.3,High,Assistant,aiohttp,AI Team,2025-06-18,"Deepseek API integration",ai_core/assistants/deepseek_adapter.py,Blue (#60A5FA),Update
+ai_core/assistants/openai.py,Integration,Active,v1.5,High,Assistant,openai,AI Team,2025-06-18,"ChatGPT API integration",ai_core/assistants/openai_adapter.py,Blue (#60A5FA),Update
+ai_core/learning/think_processor.py,Core,New,v0.1,High,Learning,,AI Team,2025-06-18,"Think session analyzer",ai_core/learning/knowledge_processor.py,Green (#4ADE80),Create
+security/keys/vault.py,Security,Active,v1.3,Critical,Security,cryptography,Security Team,2025-06-18,"Encrypted key storage",security/keys/secure_vault.py,Blue (#60A5FA),Update
+security/comms/secure_channel.py,Security,New,v0.1,Critical,Security,"AESGCM, JWT",Security Team,2025-06-18,"End-to-end encrypted channels",security/comms/e2e_encryption.py,Green (#4ADE80),Create
+data/think_sessions/processor.py,Data,New,v0.1,Medium,Knowledge,,AI Team,2025-06-18,"Think session processor",data/knowledge/session_processor.py,Green (#4ADE80),Create
+control_hub/dashboard/web_interface.py,Web,Active,v1.7,High,Interface,"FastAPI, Vue.js",Web Team,2025-06-18,"Unified web dashboard",control_hub/dashboard/web_controller.py,Blue (#60A5FA),Update
+control_hub/dashboard/vscode_extension.js,Interface,Active,v1.3,High,Editor,"VSCode API, WebSockets",VSCode Team,2025-06-18,"VSCode extension",control_hub/dashboard/vscode_integration.js,Blue (#60A5FA),Update
+core/memory/nodes.py,Core,Active,v1.7,High,Memory,,AI Team,2025-06-17,"Memory node system",core/memory/nodes.py,Blue (#60A5FA),Keep
+core/memory/integration.py,Core,Active,v1.3,High,Memory,,Integration Team,2025-06-17,"Memory system initialization",core/memory/init.py,Blue (#60A5FA),Update
+core/memory/persistence.py,Core,Active,v1.2,High,Memory,,Systems Team,2025-06-17,"Memory persistence handler",core/memory/storage.py,Blue (#60A5FA),Update
+services/comms/manager.py,Service,Active,v1.3,High,Communication,,Comms Team,2025-06-17,"Communication hub",services/comms/message_broker.py,Blue (#60A5FA),Update
+services/ai/connector.py,Service,Active,v1.4,High,AI,,AI Team,2025-06-17,"Multi-provider AI connector",services/ai/providers.py,Blue (#60A5FA),Update
+system/sync_manager.py,System,Active,v1.4,High,Sync,watchdog,System Team,2025-06-21,"File synchronization",system/sync/file_sync.py,Blue (#60A5FA),Update
+system/version_manager.py,System,Active,v1.2,High,Versioning,,System Team,2025-06-21,"Version control",system/version/manager.py,Blue (#60A5FA),Update
+security/auth/encryption_service.py,Security,Active,v1.3,Critical,Auth,,Security Team,2025-06-17,"AES-GCM encryption",security/crypto/encryption.py,Blue (#60A5FA),Update
+cli/main.py,CLI,Active,v1.3,High,Interface,"click, rich",CLI Team,2025-06-21,"Primary CLI handler",interfaces/cli/main.py,Blue (#60A5FA),Update
+cli/voice_tools.py,CLI,Active,v1.0,Medium,Audio,slick.system.voice_listener,CLI Team,2025-06-21,"Android mic listening",interfaces/cli/audio_tools.py,Blue (#60A5FA),Update
+scripts/Backup.py,Script,Active,v1.4,High,Backup,,DevOps,2025-06-17,"AI state backup system",scripts/backup/system_backup.py,Blue (#60A5FA),Update
+scripts/sync_system.py,Script,Active,v1.2,High,Sync,,DevOps,2025-06-17,"Git and file synchronization",scripts/sync/repo_sync.py,Blue (#60A5FA),Update
+tests/test_memory.py,Test,Not Started,,High,Memory,,,2025-06-21,"Memory system tests",tests/core/memory_tests.py,Red (#F87171),Fix
+tests/test_telegram_bot.py,Test,Not Started,,High,Bot,,,2025-06-21,"Telegram integration tests",tests/interfaces/telegram_tests.py,Red (#F87171),Fix
+config/settings.py,Config,Active,v2.2,High,Configuration,,System Team,2025-06-17,"Core configuration settings",config/core_settings.py,Blue (#60A5FA),Update
+config/command_registry.csv,Config,Active,v1.1,High,Registry,,System Team,2025-06-17,"Command registry",config/commands.csv,Blue (#60A5FA),Keep
+data/think_sessions/Think_session1.txt,Data,Active,v1.0,Medium,Knowledge,,User,2025-06-18,"User think session",data/knowledge/sessions/session1.txt,Green (#4ADE80),Keep
+data/think_sessions/Think_session2.txt,Data,Active,v1.0,Medium,Knowledge,,User,2025-06-18,"User think session",data/knowledge/sessions/session2.txt,Green (#4ADE80),Keep
+data/ai_preferences_details.csv,Data,Active,v1.0,Medium,Preferences,,System Team,2025-06-17,"AI preference settings",config/preferences.csv,Blue (#60A5FA),Update
+deployment/Dockerfile,Deployment,New,v1.0,High,Container,requirements.txt,DevOps,2025-06-21,"Container configuration",deployment/container/Dockerfile,Green (#4ADE80),Create
+deployment/docker-compose.yml,Deployment,Active,v1.2,High,Orchestration,redis,DevOps,2025-06-21,"Multi-container orchestration",deployment/container/compose.yml,Green (#4ADE80),Keep
+web_interface/templates/chat.html,Web,Active,v1.0,High,UI,"Bootstrap, Chart.js",Web Team,2025-06-18,"Chat interface template",control_hub/dashboard/templates/chat.html,Blue (#60A5FA),Update

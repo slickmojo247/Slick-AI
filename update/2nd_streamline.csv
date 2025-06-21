@@ -1,0 +1,46 @@
+type,module_name,path,purpose
+core,Main Entrypoint,SLICK.py,Primary application entry point
+core,Configuration,.env,Environment variables
+core,Configuration,config/,Configuration files
+core,Configuration,requirements.txt,Python dependencies
+core,Configuration,setup.py,Main installation script
+
+ai,AI Core,ai_core/,Core AI processing modules
+ai,Cognitive Engine,cognitive/,Reasoning components
+ai,Knowledge Base,knowledge/,Knowledge management
+ai,Memory System,memory/,Memory persistence
+ai,Stream Processing,streamline_ai.py,AI processing pipeline
+
+interface,Chat Interface,Slick_chat.py,Chat functionality
+interface,Voice System,voice_server.py,Voice processing
+interface,Voice System,mic_input/,Microphone input
+interface,Web UI,web_interface/,Web interface components
+interface,Web UI,templates/,HTML templates
+interface,Web UI,index.html,Main web page
+interface,Web UI,Slick_dashboard.html,Dashboard
+interface,CLI,cli/,Command line interface
+
+data,Data Management,data/,Data storage/processing
+data,Database,backend/,Database interactions
+
+dev,Testing,tests/,Test cases
+dev,Testing,run_tests.py,Test runner
+dev,Testing,test_advanced_cognition.py,Cognition tests
+dev,Documentation,docs/,Documentation
+dev,Documentation,README.md,Project overview
+dev,Documentation,project_structure.csv,Structure reference
+
+utils,Utilities,utils/,Helper functions
+utils,Utilities,fix_imports.py,Import fixer
+utils,Utilities,noise_filter.py,Audio processing
+utils,Utilities,verify.py,Validation tools
+utils,Scripts,scripts/,Automation scripts
+
+modules,Extensions,modules/,Plugins
+modules,Integrations,deepseek_integration.py,DeepSeek API
+modules,Integrations,telegram_bot/,Telegram integration
+modules,Integrations,vscode_integration/,VSCode tools
+
+system,Core System,core/,Low-level systems
+system,Engine,engine/,Execution engine
+system,Deployment,deployment/,Deployment configs

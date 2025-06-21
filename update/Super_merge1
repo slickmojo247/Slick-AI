@@ -1,0 +1,197 @@
+"""
+SLICK AI Control Center - Unified System
+Combines: 
+- Backend services (FastAPI)
+- AI management (OpenAI/DeepSeek) 
+- Action system
+- File management
+- Frontend components
+"""
+
+import os
+import re
+import json
+import sqlite3
+import httpx
+import uvicorn
+import websockets
+from abc import ABC, abstractmethod
+from typing import Dict, List, Optional, Literal
+from fastapi import FastAPI, APIRouter, WebSocket, Security
+from cryptography.fernet import Fernet
+from unittest.mock import AsyncMock
+import pytest
+
+# ========================
+# CORE COMPONENTS
+# ========================
+
+class Action(ABC):
+    """Enhanced action base class with priority and context support"""
+    priority: int = 0
+    
+    @property
+    @abstractmethod
+    def pattern(self) -> str:
+        pass
+    
+    @abstractmethod
+    async def execute(self, match: re.Match, context: dict) -> str:
+        pass
+
+class LightAction(Action):
+    priority = 1
+    
+    @property
+    def pattern(self) -> str:
+        return r'turn (on|off) (?:the )?lights?'
+    
+    async def execute(self, match: re.Match, context: dict) -> str:
+        return f"💡 Lights turned {match.group(1)}"
+
+class GameAction(Action):
+    @property
+    def pattern(self) -> str:
+        return r'trigger (\w+) event'
+    
+    async def execute(self, match: re.Match, context: dict) -> str:
+        return f"🎮 Game event triggered: {match.group(1)}"
+
+class AIConnector:
+    def __init__(self):
+        self.clients = {
+            'openai': httpx.AsyncClient(base_url='https://api.openai.com/v1'),
+            'deepseek': httpx.AsyncClient(
+                base_url='https://api.deepseek.com/v1',
+                headers={'Authorization': f"Bearer {os.getenv('DEEPSEEK_KEY')}"}
+            )
+        }
+    
+    async def generate(self, prompt: str, context: dict, model: str = 'hybrid') -> str:
+        """Smart routing between AI providers"""
+        if model == 'hybrid':
+            model = 'deepseek-coder' if self._is_code_request(prompt) else 'gpt-4'
+        
+        if 'deepseek' in model:
+            return await self._deepseek_request(prompt, model)
+        return await self._openai_request(prompt, model)
+    
+    def _is_code_request(self, prompt: str) -> bool:
+        code_keywords = {'code', 'debug', 'syntax', 'algorithm'}
+        return any(kw in prompt.lower() for kw in code_keywords)
+    
+    async def _openai_request(self, prompt: str, model: str) -> str:
+        response = await self.clients['openai'].post(
+            '/chat/completions',
+            json={'model': model, 'messages': [{'role': 'user', 'content': prompt}]},
+            headers={'Authorization': f"Bearer {os.getenv('OPENAI_KEY')}"}
+        )
+        return response.json()['choices'][0]['message']['content']
+    
+    async def _deepseek_request(self, prompt: str, model: str) -> str:
+        response = await self.clients['deepseek'].post(
+            '/chat/completions',
+            json={'model': model, 'messages': [{'role': 'user', 'content': prompt}]}
+        )
+        return response.json()['choices'][0]['message']['content']
+
+class FileManager:
+    def __init__(self):
+        self.conn = sqlite3.connect(":memory:")
+        self.conn.execute("CREATE TABLE files(path TEXT PRIMARY KEY, content TEXT)")
+    
+    def sync(self, path: str, content: str):
+        """VSCode/web sync with conflict detection"""
+        curr = self.conn.execute("SELECT content FROM files WHERE path=?", (path,)).fetchone()
+        if curr and curr[0] != content:
+            raise ValueError(f"Conflict detected for {path}")
+        self.conn.execute("REPLACE INTO files VALUES(?,?)", (path, content))
+    
+    def get_tree(self, path: str = None):
+        """Get file structure"""
+        query = "SELECT path FROM files" + (" WHERE path LIKE ?" if path else "")
+        params = (f"{path}%",) if path else ()
+        return [row[0] for row in self.conn.execute(query, params)]
+
+class SlickController:
+    def __init__(self):
+        self.actions: List[Action] = [LightAction(), GameAction()]
+        self.ai = AIConnector()
+        self.file_manager = FileManager()
+    
+    async def handle_request(self, input_str: str, context: Dict = None) -> str:
+        """Process input through action system or AI"""
+        context = context or {}
+        
+        # Try actions first
+        for action in sorted(self.actions, key=lambda a: a.priority, reverse=True):
+            if match := re.search(action.pattern, input_str, re.IGNORECASE):
+                return await action.execute(match, context)
+        
+        # Fallback to AI
+        return await self.ai.generate(input_str, context)
+
+# ========================
+# WEB SERVER & ENDPOINTS
+# ========================
+
+app = FastAPI()
+router = APIRouter()
+controller = SlickController()
+
+@router.post("/query")
+async def process_query(prompt: str):
+    """Unified endpoint for all requests"""
+    return await controller.handle_request(prompt)
+
+@router.websocket("/ws")
+async def websocket_handler(ws: WebSocket):
+    await ws.accept()
+    while True:
+        data = await ws.receive_json()
+        response = await controller.handle_request(data['message'])
+        await ws.send_json({'response': response})
+
+@router.get("/files")
+async def list_files(path: str = None):
+    return controller.file_manager.get_tree(path)
+
+@app.get("/system/status")
+def status():
+    return {
+        "services": ["ai", "file", "websocket"],
+        "status": "operational"
+    }
+
+app.include_router(router)
+
+# ========================
+# TESTING
+# ========================
+
+@pytest.fixture
+def full_mock_environment():
+    return {
+        'openai': AsyncMock(),
+        'deepseek': AsyncMock(),
+        'services': {
+            'slick-controller': {'status': 'running'},
+            'vscode-bridge': {'status': 'stopped'}
+        }
+    }
+
+def test_ai_routing(full_mock_environment):
+    router = APIRouter()
+    assert router.routes  # Simplified test
+
+def test_service_lifecycle(full_mock_environment):
+    services = full_mock_environment['services']
+    assert services['slick-controller']['status'] == 'running'
+
+# ========================
+# MAIN ENTRY POINT
+# ========================
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+    

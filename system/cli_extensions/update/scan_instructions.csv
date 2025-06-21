@@ -1,0 +1,7 @@
+Directory,Status,Color,Action,Notes,Version Policy
+core/,KEEP,Green (#4ADE80),Preserve all files,Core system files,SemVer
+legacy/,LEGACY,Yellow (#FBBF24),Archive after review,Old system versions,Snapshot
+interfaces/,UPDATE,Blue (#60A5FA),Update to new standards,UI components,SemVer
+temp/,DELETE,Red (#F87171),Remove immediately,Temporary files,None
+experimental/,REVIEW,Pink (#F472B6),Review for potential merge,New features,Experimental
+merged/,MERGE,Purple (#A78BFA),Merged components,Combined features,SemVer

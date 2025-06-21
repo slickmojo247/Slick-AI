@@ -1,0 +1,700 @@
+Path, Filename, Content
+slick/,,
+slick/core/,__init__.py,"""# Core functionality package"""
+slick/core/,system_initializer.py,"""# System Initialization
+from slick.config import load_ai_profile, load_ai_preferences
+
+class SystemInitializer:
+    def __init__(self):
+        self.profile = load_ai_profile()
+        self.prefs = load_ai_preferences()
+        
+    def initialize(self):
+        print(f"Initializing {self.profile['name']} AI System")
+        print(f"Personality: Curiosity={self.profile['personality_traits']['curiosity']}, "
+              f"Analytical={self.profile['personality_traits']['analytical']}")
+        print(f"Memory Settings: Decay Alpha={self.prefs['memory_decay_alpha']}, "
+              f"Weights={self.prefs['contextual_recall_weights']}")
+        return "System initialized successfully"
+"""
+slick/config/,__init__.py,"""# Configuration management"""
+slick/config/,profile_loader.py,"""# AI Profile Loader
+import json
+import csv
+
+def load_ai_profile():
+    # Load from JSON snapshot
+    try:
+        with open('slick/data/snapshot_config.json') as f:
+            config = json.load(f)
+            return config['ai_profile']
+    except:
+        # Fallback to CSV if JSON unavailable
+        return load_ai_profile_csv()
+
+def load_ai_profile_csv():
+    with open('slick/data/profile_details.csv') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            return {
+                'name': row['name'],
+                'cognitive_preferences': {
+                    'learning_style': row['cognitive_preferences_learning_style'],
+                    'memory_bias': row['cognitive_preferences_memory_bias']
+                },
+                'personality_traits': {
+                    'curiosity': float(row['personality_traits_curiosity']),
+                    'analytical': float(row['personality_traits_analytical'])
+                },
+                'interests': row['interests'].split(';'),
+                'habits': row['habits'].split(';'),
+                'health_metrics': {
+                    'sleep_avg': float(row['health_metrics_sleep_avg'])
+                },
+                'privacy_settings': {
+                    'data_retention': row['privacy_settings_data_retention'],
+                    'share_anonymous_data': row['privacy_settings_share_anonymous_data'].lower() == 'true'
+                }
+            }
+"""
+slick/config/,preferences_loader.py,"""# AI Preferences Loader
+import csv
+
+def load_ai_preferences():
+    with open('slick/data/ai_preferences_details.csv') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            return {
+                'tone': row['tone'],
+                'humor_level': row['humor_level'],
+                'proactiveness': row['proactiveness'],
+                'feedback_frequency': row['feedback_frequency'],
+                'memory_decay_alpha': float(row['memory_decay_alpha']),
+                'memory_decay_beta': float(row['memory_decay_beta']),
+                'memory_decay_gamma': float(row['memory_decay_gamma']),
+                'contextual_recall_weights': eval(row['contextual_recall_weights'])
+            }
+"""
+slick/data/,ai_preferences_details.csv,"""tone,humor_level,proactiveness,feedback_frequency,memory_decay_alpha,memory_decay_beta,memory_decay_gamma,contextual_recall_weights
+professional_but_friendly,medium,medium,on_request,0.15,0.12,0.03,"[0.5, 0.3, 0.2]"
+"""
+slick/data/,memory_nodes.csv,"""event_id,timestamp,sensory_context,emotional_weight,embeddings_type
+evt001,2023-10-26T10:00:00Z,"{""type"": ""audio"", ""source"": ""microphone""}",0.7,str
+evt002,2023-10-26T11:00:00Z,"{""type"": ""visual"", ""source"": ""camera""}",0.9,list
+"""
+slick/data/,profile_details.csv,"""name,cognitive_preferences_learning_style,cognitive_preferences_memory_bias,personality_traits_curiosity,personality_traits_analytical,interests,habits,health_metrics_sleep_avg,privacy_settings_data_retention,privacy_settings_share_anonymous_data
+Slick,visual,recent,0.9,0.8,AI research;quantum physics;system design,daily learning;coding,7.5,365_days,False
+"""
+slick/data/,snapshot_config.json,"""{
+    "ai_profile": {
+        "name": "Slick",
+        "cognitive_preferences": {
+            "learning_style": "visual",
+            "memory_bias": "recent"
+        },
+        "personality_traits": {
+            "curiosity": 0.9,
+            "analytical": 0.8
+        },
+        "interests": [
+            "AI research",
+            "quantum physics",
+            "system design"
+        ],
+        "habits": [
+            "daily learning",
+            "coding"
+        ],
+        "health_metrics": {
+            "sleep_avg": 7.5
+        },
+        "privacy_settings": {
+            "data_retention": "365_days",
+            "share_anonymous_data": false
+        }
+    },
+    "ai_preferences": {
+        "tone": "professional_but_friendly",
+        "humor_level": "medium",
+        "proactiveness": "medium",
+        "feedback_frequency": "on_request",
+        "memory_decay_alpha": 0.15,
+        "memory_decay_beta": 0.12,
+        "memory_decay_gamma": 0.03,
+        "contextual_recall_weights": [
+            0.5,
+            0.3,
+            0.2
+        ]
+    }
+}
+"""
+slick/memory/,__init__.py,"""# Memory System Core"""
+slick/memory/,memory_core.py,"""# Enhanced Memory Core with Decay
+import json
+import datetime
+from dateutil.parser import parse
+from slick.config import load_ai_preferences
+
+class MemoryBank:
+    def __init__(self):
+        self.long_term = {}
+        self.code_snippets = {'python': {}, 'json': {}, 'js': {}, 'html': {}}
+        prefs = load_ai_preferences()
+        self.decay_alpha = prefs['memory_decay_alpha']
+        self.decay_beta = prefs['memory_decay_beta']
+        self.decay_gamma = prefs['memory_decay_gamma']
+        self.context_weights = prefs['contextual_recall_weights']
+    
+    def add_memory(self, event, category='event', importance=0.7, sensory_context=None):
+        timestamp = datetime.datetime.now().isoformat()
+        memory_id = f""mem_{len(self.long_term) + 1}""
+        entry = {
+            'id': memory_id,
+            'content': event,
+            'timestamp': timestamp,
+            'category': category,
+            'importance': importance,
+            'sensory_context': sensory_context or {},
+            'decayed_importance': importance  # Start with full importance
+        }
+        self.long_term[memory_id] = entry
+        return memory_id
+    
+    def apply_decay(self):
+        current_time = datetime.datetime.now()
+        for mem_id, mem in self.long_term.items():
+            mem_time = parse(mem['timestamp'])
+            age_days = (current_time - mem_time).days
+            
+            # Apply exponential decay based on preferences
+            decay_factor = self.decay_alpha + (self.decay_beta * mem['importance']) + (self.decay_gamma * age_days)
+            mem['decayed_importance'] = mem['importance'] * (0.99 ** (decay_factor * age_days))
+            
+            # Auto-purge insignificant memories
+            if mem['decayed_importance'] < 0.05:
+                del self.long_term[mem_id]
+    
+    def contextual_recall(self, query, context):
+        # Weighted recall based on context and preferences
+        results = []
+        for mem_id, mem in self.long_term.items():
+            relevance = 0
+            
+            # Content relevance (50% weight)
+            if any(term in mem['content'] for term in query.split()):
+                relevance += self.context_weights[0]
+                
+            # Contextual relevance (30% weight)
+            if any(ctx in str(context) for ctx in mem['sensory_context']):
+                relevance += self.context_weights[1]
+                
+            # Recency relevance (20% weight)
+            mem_time = parse(mem['timestamp'])
+            recency = 1 - min(1, (datetime.datetime.now() - mem_time).days / 365)
+            relevance += recency * self.context_weights[2]
+                
+            # Apply decayed importance
+            relevance *= mem['decayed_importance']
+            
+            if relevance > 0.1:
+                results.append((mem_id, relevance))
+        
+        # Sort by relevance and return
+        results.sort(key=lambda x: x[1], reverse=True)
+        return [self.long_term[mem_id] for mem_id, _ in results[:5]]
+"""
+slick/memory/,memory_integration.py,"""# Memory System Integration
+from slick.config import load_ai_profile
+from .memory_core import MemoryBank
+
+profile = load_ai_profile()
+MEMORY_BANK = MemoryBank()
+
+def apply_memory_bias():
+    # Apply cognitive preferences from profile
+    if profile['cognitive_preferences']['memory_bias'] == 'recent':
+        MEMORY_BANK.decay_alpha *= 0.8  # Less decay for recent bias
+    elif profile['cognitive_preferences']['memory_bias'] == 'important':
+        MEMORY_BANK.decay_beta *= 0.7  # Preserve important memories longer
+
+def initialize_memory():
+    # Load from CSV
+    try:
+        import csv
+        with open('slick/data/memory_nodes.csv') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                MEMORY_BANK.add_memory(
+                    event_id=row['event_id'],
+                    sensory_context=eval(row['sensory_context']),
+                    importance=float(row['emotional_weight']),
+                    category='preload'
+                )
+        return f"Loaded {len(MEMORY_BANK.long_term)} initial memories"
+    except Exception as e:
+        return f"Memory initialization error: {str(e)}"
+"""
+slick/personality/,__init__.py,"""# Personality System"""
+slick/personality/,trait_engine.py,"""# Personality Trait Engine
+from slick.config import load_ai_profile, load_ai_preferences
+
+profile = load_ai_profile()
+prefs = load_ai_preferences()
+
+class PersonalityEngine:
+    def __init__(self):
+        self.traits = profile['personality_traits']
+        self.tone = prefs['tone']
+        self.humor_level = prefs['humor_level']
+        self.proactiveness = prefs['proactiveness']
+        
+    def generate_response_style(self, message):
+        # Apply personality traits to response
+        base_style = ""
+        
+        # Tone adjustments
+        if self.tone == 'professional_but_friendly':
+            base_style = f""{message} Please let me know if you need further clarification."""
+        
+        # Humor injection
+        if self.humor_level == 'high' and self.traits['curiosity'] > 0.7:
+            base_style += "" 🤖✨""
+        elif self.humor_level == 'medium' and '?' in message:
+            base_style += "" Let's explore this together!""
+            
+        # Proactiveness
+        if self.proactiveness == 'high' and not message.endswith('?'):
+            base_style += "" Would you like me to investigate further?"""
+            
+        return base_style
+    
+    def should_provide_feedback(self):
+        if prefs['feedback_frequency'] == 'always':
+            return True
+        elif prefs['feedback_frequency'] == 'on_request':
+            return False
+        elif prefs['feedback_frequency'] == 'when_uncertain' and self.traits['analytical'] < 0.7:
+            return True
+        return False
+"""
+slick/cognitive/,__init__.py,"""# Cognitive Processing"""
+slick/cognitive/,learning_adapter.py,"""# Learning Style Adapter
+from slick.config import load_ai_profile
+
+profile = load_ai_profile()
+
+class LearningAdapter:
+    def adapt_content(self, content):
+        style = profile['cognitive_preferences']['learning_style']
+        
+        if style == 'visual':
+            return f""""
+            🖼️ VISUAL REPRESENTATION
+            {content}
+            -------------------------
+            """"
+        elif style == 'auditory':
+            return f""""
+            🎧 AUDIO SUMMARY
+            {content[:100]}... [audio processing engaged]
+            """"
+        elif style == 'kinesthetic':
+            return f""""
+            ✋ INTERACTIVE ELEMENT
+            {content}
+            [Actionable steps highlighted]
+            """"
+        return content
+"""
+slick/cognitive/,interest_enhancer.py,"""# Interest-Based Enhancement
+from slick.config import load_ai_profile
+
+profile = load_ai_profile()
+
+class InterestEnhancer:
+    def enhance(self, content):
+        # Boost relevance for profile interests
+        for interest in profile['interests']:
+            if interest.lower() in content.lower():
+                return f""""
+                ⭐ SPECIAL INTEREST DETECTED ({interest}) ⭐
+                {content}
+                [Additional context loaded]
+                """"
+        return content
+"""
+slick/interface/,__init__.py,"""# User Interface System"""
+slick/interface/,voice_integration.py,"""# Enhanced Voice Integration
+from slick.config import load_ai_profile
+from slick.memory import MEMORY_BANK
+
+profile = load_ai_profile()
+
+class VoiceInterface:
+    def __init__(self):
+        self.voice_profile = self.load_voice_profile()
+        
+    def load_voice_profile(self):
+        return {
+            'speech_rate': 150 if profile['habits'] and 'coding' in profile['habits'] else 130,
+            'pitch': 0.8 if profile['health_metrics']['sleep_avg'] > 7.0 else 1.0
+        }
+    
+    def process_voice_command(self, audio_data):
+        # Transcribe and process with memory context
+        text = self.transcribe(audio_data)
+        MEMORY_BANK.add_memory(
+            f""Voice command: {text}"",
+            category='voice',
+            sensory_context={'type': 'audio', 'source': 'microphone'}
+        )
+        return text
+    
+    def transcribe(self, audio_data):
+        # Placeholder for actual STT implementation
+        return "Transcribed voice command"
+"""
+slick/engine/,__init__.py,"""# Core AI Engine"""
+slick/engine/,logic_core.py,"""# Enhanced Logic Core
+from slick.config import load_ai_profile, load_ai_preferences
+from slick.memory import MEMORY_BANK
+from slick.personality import PersonalityEngine
+from slick.cognitive import LearningAdapter, InterestEnhancer
+
+profile = load_ai_profile()
+prefs = load_ai_preferences()
+
+class SlickLogicEngine:
+    def __init__(self):
+        self.state = {}
+        self.personality = PersonalityEngine()
+        self.learning_adapter = LearningAdapter()
+        self.interest_enhancer = InterestEnhancer()
+        self.interests = profile['interests']
+    
+    def handle_command(self, command, context=None):
+        # Apply memory and personality
+        context = context or {}
+        memory_context = MEMORY_BANK.contextual_recall(command, context)
+        
+        # Interest-based prioritization
+        if any(interest in command for interest in self.interests):
+            command = f""PRIORITY: {command}""
+            
+        # Personality-based processing
+        if 'joke' in command and prefs['humor_level'] != 'none':
+            response = ""Why don't scientists trust atoms? Because they make up everything!""
+        elif 'analyze' in command and profile['personality_traits']['analytical'] > 0.7:
+            response = ""Running deep analysis with quantum simulation...""
+        else:
+            response = f""Processing: {command} with context: {memory_context[:1]}""
+        
+        # Apply learning style and interest enhancement
+        response = self.learning_adapter.adapt_content(response)
+        response = self.interest_enhancer.enhance(response)
+        
+        # Final personality styling
+        return self.personality.generate_response_style(response)
+"""
+slick/engine/,preference_applier.py,"""# Preference Applier
+from slick.config import load_ai_preferences
+
+prefs = load_ai_preferences()
+
+class PreferenceApplier:
+    def apply(self, content):
+        # Apply tone preferences
+        if prefs['tone'] == 'professional_but_friendly':
+            content = content.replace(""I think"", ""My analysis suggests"")
+            content = content.replace(""can't"", ""cannot"")
+        
+        # Apply humor level
+        if prefs['humor_level'] == 'low':
+            content = content.split('🤖')[0] if '🤖' in content else content
+        elif prefs['humor_level'] == 'high':
+            if not any(emoji in content for emoji in ['🤖', '✨', '⭐']):
+                content += "" 😊""
+                
+        return content
+"""
+slick/system/,__init__.py,"""# System Management"""
+slick/system/,boot_loader.py,"""# System Boot Loader
+from slick.core import SystemInitializer
+from slick.memory import initialize_memory, apply_memory_bias, MEMORY_BANK
+from slick.engine import SlickLogicEngine
+
+def boot_system():
+    # Initialize core systems
+    initializer = SystemInitializer()
+    init_status = initializer.initialize()
+    
+    # Initialize memory with bias
+    mem_status = initialize_memory()
+    apply_memory_bias()
+    
+    # Create logic engine
+    engine = SlickLogicEngine()
+    
+    # Welcome message
+    profile = initializer.profile
+    welcome = f""{profile['name']} AI Online | Interests: {', '.join(profile['interests'])}""
+    
+    return f""{init_status} | {mem_status} | {welcome}""
+"""
+slick/system/,maintenance_scheduler.py,"""# Maintenance Scheduler
+import time
+import threading
+from slick.memory.memory_core import MemoryBank
+
+class MaintenanceScheduler:
+    def __init__(self, memory_bank):
+        self.memory_bank = memory_bank
+        self.running = True
+        
+    def start(self):
+        def run():
+            while self.running:
+                # Apply memory decay every hour
+                self.memory_bank.apply_decay()
+                time.sleep(3600)
+                
+        thread = threading.Thread(target=run, daemon=True)
+        thread.start()
+        
+    def stop(self):
+        self.running = False
+"""
+slick/main.py,"""# Main Application Entry Point
+from slick.system import boot_loader, maintenance_scheduler
+from slick.memory import MEMORY_BANK
+
+if __name__ == "__main__":
+    # Boot the system
+    boot_status = boot_loader.boot_system()
+    print(boot_status)
+    
+    # Start maintenance tasks
+    scheduler = maintenance_scheduler.MaintenanceScheduler(MEMORY_BANK)
+    scheduler.start()
+    
+    # Main loop
+    try:
+        while True:
+            user_input = input("You: ")
+            if user_input.lower() == 'exit':
+                break
+            # Process command through engine
+            # (In real implementation, this would use the logic engine)
+            print("Slick: Processing command with personalized AI...")
+    except KeyboardInterrupt:
+        print("\nShutting down Slick AI system")
+    finally:
+        scheduler.stop()
+"""
+requirements.txt,"","""# Dependencies
+numpy==1.26.4
+python-dateutil==2.9.0.post0
+websockets==11.0.3
+whisper==20231117
+transformers==4.38.2
+torch==2.2.1
+sounddevice==0.4.6
+"""
+Path, Filename, Content
+slick/web_interface/,__init__.py,"""# Web interface package"""
+slick/web_interface/,app.py,"""# Flask Application
+from flask import Flask, render_template, request, jsonify
+from slick.system.boot_loader import boot_system
+from slick.engine.logic_core import SlickLogicEngine
+import threading
+
+app = Flask(__name__)
+engine = SlickLogicEngine()
+
+# Initialize system in background
+init_thread = threading.Thread(target=boot_system)
+init_thread.start()
+
+@app.route('/')
+def index():
+    return render_template('index.html', ai_name="Slick")
+
+@app.route('/chat', methods=['POST'])
+def chat():
+    user_input = request.json['message']
+    response = engine.handle_command(user_input)
+    return jsonify({'response': response})
+
+@app.route('/voice', methods=['POST'])
+def voice():
+    # For future voice integration
+    return jsonify({'status': 'Voice endpoint active'})
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
+"""
+slick/web_interface/,templates/index.html,"""<!DOCTYPE html>
+<html>
+<head>
+    <title>Slick AI Interface</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <h1>{{ ai_name }} AI Assistant</h1>
+        <div id="chat-box"></div>
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Ask me anything...">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
+"""
+slick/web_interface/,static/style.css,"""/* CSS for chat interface */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+}
+
+.chat-container {
+    width: 800px;
+    height: 600px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    margin: 0;
+    font-size: 28px;
+    border-bottom: 1px solid #444;
+}
+
+#chat-box {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    max-width: 70%;
+    padding: 12px 18px;
+    margin-bottom: 15px;
+    border-radius: 18px;
+    line-height: 1.5;
+}
+
+.user-message {
+    align-self: flex-end;
+    background: linear-gradient(to right, #0062ff, #00c3ff);
+    border-bottom-right-radius: 5px;
+}
+
+.ai-message {
+    align-self: flex-start;
+    background: linear-gradient(to right, #333, #555);
+    border-bottom-left-radius: 5px;
+}
+
+.input-area {
+    display: flex;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border-top: 1px solid #444;
+}
+
+#user-input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+#send-btn {
+    background: linear-gradient(to right, #00c3ff, #0062ff);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 0 30px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+#send-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00c3ff;
+}
+"""
+slick/web_interface/,static/script.js,"""// JavaScript for chat functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const chatBox = document.getElementById('chat-box');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    
+    function addMessage(text, isUser = false) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.classList.add(isUser ? 'user-message' : 'ai-message');
+        messageDiv.textContent = text;
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+    
+    async function sendMessage() {
+        const message = userInput.value.trim();
+        if (!message) return;
+        
+        addMessage(message, true);
+        userInput.value = '';
+        
+        try {
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message })
+            });
+            
+            const data = await response.json();
+            addMessage(data.response);
+        } catch (error) {
+            addMessage('Error connecting to AI server');
+        }
+    }
+    
+    sendBtn.addEventListener('click', sendMessage);
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
+    
+    // Initial greeting
+    setTimeout(() => {
+        addMessage('Hello! I\'m Slick, your personal AI assistant. How can I help you today?');
+    }, 1000);
+});
+"""

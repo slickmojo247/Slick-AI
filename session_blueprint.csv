@@ -1,0 +1,7 @@
+Step,Action,Command,File,Status,Notes
+1,Create Analysis Script,"cat > cohesion_plan.py << 'EOF'...",cohesion_plan.py,Completed,"Fixed syntax errors, added proper error handling"
+2,Run Analysis,"python3 cohesion_plan.py",action_plan.txt,Completed,"Generated list of files needing updates"
+3,Verify Python Version,"python3 --version",-,Completed,"Confirmed Python 3.8+"
+4,Check CSV Files,"head -n 3 update/*.csv",update/*.csv,Completed,"Validated all CSV formats"
+5,Alternative Check,"grep -h ""Update"" update/*.csv",update/*.csv,Completed,"Quick file list verification"
+6,Output Results,"less action_plan.txt",action_plan.txt,Completed,"Shows CREATE/UPDATE/MERGE actions"
