@@ -1,0 +1,18 @@
+2025-06-18 15:53:28,548 - engine.SlickLogicEngine - INFO - Initialized in balanced mode
+2025-06-18 15:53:28,550 - __main__ - INFO - System initialized
+2025-06-18 15:53:40,248 - engine.SlickLogicEngine - INFO - Changed to homer mode
+2025-06-18 15:54:15,174 - engine.SlickLogicEngine - ERROR - Processing failed: 'list' object has no attribute 'get'
+2025-06-18 15:54:15,177 - ai_core.APIOrchestrator - ERROR - Routing failed: 'query'
+2025-06-18 15:56:06,550 - __main__ - INFO - Shutdown initiated
+2025-06-18 16:01:20,353 - engine.SlickLogicEngine - INFO - Initialized in balanced mode
+2025-06-18 16:01:20,355 - __main__ - INFO - System initialized
+2025-06-18 16:01:34,716 - engine.SlickLogicEngine - INFO - Changed to homer mode
+2025-06-18 16:02:03,246 - __main__ - INFO - Shutdown initiated
+2025-06-18 16:02:38,143 - engine.SlickLogicEngine - INFO - Initialized in balanced mode
+2025-06-18 16:02:38,145 - __main__ - INFO - System initialized
+2025-06-18 16:03:09,580 - engine.SlickLogicEngine - INFO - Changed to homer mode
+2025-06-18 16:03:42,323 - __main__ - INFO - Shutdown initiated
+2025-06-18 16:10:25,090 - engine.SlickLogicEngine - INFO - Initialized in balanced mode
+2025-06-18 16:10:25,092 - __main__ - INFO - System initialized
+2025-06-18 16:10:41,737 - engine.SlickLogicEngine - INFO - Changed to technical mode
+2025-06-18 16:11:55,633 - __main__ - INFO - Shutdown initiated

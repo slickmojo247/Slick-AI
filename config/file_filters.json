@@ -1,0 +1,25 @@
+{
+  "include_extensions": [".py", ".json", ".md", ".txt", ".csv"],
+  "include_files": [
+    "requirements.txt",
+    "README.md",
+    "LICENSE"
+  ],
+  "include_dirs": [
+    "core",
+    "logic_engine",
+    "interfaces",
+    "config"
+  ],
+  "exclude_patterns": [
+    "venv",
+    ".venv",
+    "__pycache__",
+    "*.pyc",
+    "*.pyo",
+    ".git",
+    ".DS_Store",
+    "*.tmp",
+    "*.bak"
+  ]
+}
